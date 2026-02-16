@@ -1,127 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIX | PERFORMANCE OPTIMIZATION</title>
+    <title>FIX | HARDWARE RESTORATION NODE</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
-        
-        :root { --neon: #00f2ff; --warning: #ffcc00; --bg: #050505; }
-        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; }
-        .boss-font { font-family: 'Syncopate', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
-        /* Scanning UI Element */
-        .analyzer-bar {
-            height: 2px;
-            background: var(--neon);
-            box-shadow: 0 0 15px var(--neon);
-            position: absolute;
-            width: 100%;
-            animation: scan-vertical 3s ease-in-out infinite;
-            z-index: 10;
+        :root {
+            --neon: #00f2ff;
+            --bg: #010101;
+            --panel: rgba(255, 255, 255, 0.03);
+            --border: rgba(0, 242, 255, 0.15);
         }
 
-        @keyframes scan-vertical {
-            0%, 100% { top: 0%; }
-            50% { top: 100%; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* --- UI ELEMENTS --- */
+        .cyber-grid {
+            position: fixed; inset: 0;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px; z-index: -1; opacity: 0.2;
         }
 
-        /* Diagnostic Cards */
-        .diag-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
-        .diag-card:hover {
-            border-color: var(--neon);
-            background: rgba(0, 242, 255, 0.03);
-        }
+        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(20px); z-index: 5000; }
+        .nav-link { font-family: 'Syncopate'; font-size: 10px; color: #fff; transition: 0.3s; letter-spacing: 2px; }
 
-        .status-dot {
-            height: 8px; width: 8px;
-            background: var(--neon);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 10px;
-            box-shadow: 0 0 10px var(--neon);
+        /* --- REPAIR LIST --- */
+        .repair-node {
+            background: var(--panel); border: 1px solid var(--border);
+            padding: 2rem; transition: 0.4s; position: relative;
         }
+        .repair-node:hover { border-color: var(--neon); background: rgba(0,242,255,0.05); }
+
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 10px; }
+        .online { background: #00ff88; box-shadow: 0 0 10px #00ff88; }
+
+        .btn-uplink {
+            border: 1px solid var(--neon); padding: 15px 30px;
+            color: var(--neon); font-family: 'Syncopate'; font-size: 10px;
+            display: inline-block; transition: 0.4s;
+        }
+        .btn-uplink:hover { background: var(--neon); color: #000; box-shadow: 0 0 30px var(--neon); }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <nav class="fixed top-0 w-full z-[150] bg-black/90 backdrop-blur-xl border-b border-white/5 px-10 py-5 flex justify-between items-center">
-        <a href="services.html" class="boss-font text-[9px] text-cyan-400 flex items-center gap-2 hover:tracking-widest transition-all">
-            <i class="fas fa-arrow-left"></i> BACK_TO_STRATEGY
-        </a>
-        <div class="font-mono text-[9px] text-zinc-500 uppercase">System_Status: <span class="text-cyan-400">Analyzing_Bottlenecks</span></div>
+    <div class="cyber-grid"></div>
+
+    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/80">
+        <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
+        <div class="hidden lg:flex gap-10">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="services.html" class="nav-link">SERVICES</a>
+            <a href="products.html" class="nav-link">PRODUCTS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </div>
+        <a href="https://wa.me/923351696907" class="mono text-[10px] text-cyan-400">STATUS: READY_TO_FIX</a>
     </nav>
 
-    <main class="pt-40 pb-32 container mx-auto px-6 max-w-6xl">
-        
-        <div class="mb-20">
-            <h1 class="boss-font text-6xl md:text-8xl italic font-black text-transparent" style="-webkit-text-stroke: 1px var(--neon);">FIX.</h1>
-            <p class="text-zinc-400 text-lg mt-4 max-w-2xl font-light">We identify digital friction. From slow loading speeds to broken conversion funnels, we fix the technical issues holding your business back.</p>
+    <header class="pt-48 pb-20 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-10 items-end">
+            <div>
+                <p class="mono text-cyan-400 mb-6 text-sm tracking-[5px]">PROTOCOL_01 // HARDWARE</p>
+                <h1 class="boss-font text-6xl md:text-9xl italic mb-6">FIX.</h1>
+                <p class="text-zinc-500 text-lg font-light leading-relaxed max-w-xl">
+                    Surgical level restoration of failing systems. From motherboard micro-soldering to complex GPU recovery, we handle the technical failures others ignore.
+                </p>
+            </div>
+            <div class="mono text-[10px] text-zinc-600 space-y-2 border-l border-white/10 pl-6 pb-2">
+                <p>> DIAGNOSTIC_TOOL_LOADED</p>
+                <p>> THERMAL_THROTTLE_CHECK: OK</p>
+                <p>> VOLTAGE_STABILITY_SCAN: PASS</p>
+                <p>> REPAIR_QUEUE: ACTIVE</p>
+            </div>
         </div>
+    </header>
 
-        <div class="grid lg:grid-cols-12 gap-12">
+    <section class="max-w-7xl mx-auto px-6 pb-40">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <div class="lg:col-span-4 relative group rounded-lg overflow-hidden border border-white/10 h-[500px]">
-                <div class="analyzer-bar"></div>
-                <img src="your-photo.png" alt="Fahad" class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-110 transition-transform duration-1000">
-                <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black to-transparent w-full">
-                    <p class="boss-font text-[10px] mb-2">OPERATOR_ID</p>
-                    <p class="font-mono text-cyan-400">FAHAD_UMAR_MALIK</p>
+            <div class="repair-node reveal">
+                <div class="flex justify-between items-start mb-10">
+                    <i class="fas fa-microchip text-3xl text-cyan-400"></i>
+                    <span class="status-dot online"></span>
                 </div>
+                <h3 class="boss-font text-xl mb-4">COMPONENT_LEVEL_REPAIR</h3>
+                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
+                    Micro-soldering and trace repair for damaged PCBs. We fix burnt capacitors, short circuits, and damaged headers on motherboards and GPUs.
+                </p>
+                <ul class="mono text-[10px] text-zinc-600 space-y-3 mb-10">
+                    <li>+ GPU VRAM REPLACEMENT</li>
+                    <li>+ POWER IC REPAIR</li>
+                    <li>+ CONNECTOR RESTORATION</li>
+                </ul>
+                <a href="https://wa.me/923351696907?text=Fix_Inquiry_Component_Repair" class="btn-uplink">REQUEST_DIAGNOSTICS</a>
             </div>
 
-            <div class="lg:col-span-8 space-y-6">
-                
-                <div class="diag-card p-8 flex gap-8 items-start">
-                    <div class="text-3xl text-cyan-400"><i class="fas fa-bolt"></i></div>
-                    <div>
-                        <h3 class="boss-font text-sm mb-2 italic">Web_Performance_Optimization</h3>
-                        <p class="text-zinc-500 text-sm mb-4 leading-relaxed">Fixing Core Web Vitals, minifying assets, and server-side tuning to achieve 99+ PageSpeed scores.</p>
-                        <span class="text-[9px] font-mono py-1 px-3 bg-cyan-400/10 text-cyan-400 rounded">RECOVERY_ACTIVE</span>
-                    </div>
+            <div class="repair-node reveal">
+                <div class="flex justify-between items-start mb-10">
+                    <i class="fas fa-terminal text-3xl text-cyan-400"></i>
+                    <span class="status-dot online"></span>
                 </div>
-
-                <div class="diag-card p-8 flex gap-8 items-start">
-                    <div class="text-3xl text-cyan-400"><i class="fas fa-search-plus"></i></div>
-                    <div>
-                        <h3 class="boss-font text-sm mb-2 italic">Technical_SEO_Repairs</h3>
-                        <p class="text-zinc-500 text-sm mb-4 leading-relaxed">Resolving indexing issues, crawl errors, and broken link architectures that prevent search engines from ranking you.</p>
-                        <span class="text-[9px] font-mono py-1 px-3 bg-cyan-400/10 text-cyan-400 rounded">AUDIT_PROTOCOL_ON</span>
-                    </div>
-                </div>
-
-                <div class="diag-card p-8 flex gap-8 items-start">
-                    <div class="text-3xl text-cyan-400"><i class="fas fa-user-shield"></i></div>
-                    <div>
-                        <h3 class="boss-font text-sm mb-2 italic">Conversion_Friction_Fix</h3>
-                        <p class="text-zinc-500 text-sm mb-4 leading-relaxed">Fixing the "leaks" in your sales funnel. We analyze user behavior to fix UX flaws that cause customers to leave.</p>
-                        <span class="text-[9px] font-mono py-1 px-3 bg-cyan-400/10 text-cyan-400 rounded">UX_STABILIZATION</span>
-                    </div>
-                </div>
-
+                <h3 class="boss-font text-xl mb-4">SYSTEM_OPTIMIZATION</h3>
+                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
+                    Kernel-level OS debloating and driver stabilization. We eliminate software bottlenecks to bring back factory-plus performance.
+                </p>
+                <ul class="mono text-[10px] text-zinc-600 space-y-3 mb-10">
+                    <li>+ OS RE-CALIBRATION</li>
+                    <li>+ DRIVER CONFLICT RESOLUTION</li>
+                    <li>+ BIOS UPDATES & FLASHING</li>
+                </ul>
+                <a href="https://wa.me/923351696907?text=Fix_Inquiry_System_Optimization" class="btn-uplink">REQUEST_OPTIMIZATION</a>
             </div>
+
+            <div class="repair-node reveal">
+                <div class="flex justify-between items-start mb-10">
+                    <i class="fas fa-laptop-medical text-3xl text-cyan-400"></i>
+                    <span class="status-dot online"></span>
+                </div>
+                <h3 class="boss-font text-xl mb-4">LAPTOP_RESTORE</h3>
+                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
+                    Complete overhaul for MacBooks and Windows Workstations. Screen replacements, hinge repairs, and thermal management.
+                </p>
+                <ul class="mono text-[10px] text-zinc-600 space-y-3 mb-10">
+                    <li>+ LIQUID DAMAGE RECOVERY</li>
+                    <li>+ PANEL REPLACEMENT</li>
+                    <li>+ THERMAL RE-PASTING</li>
+                </ul>
+                <a href="https://wa.me/923351696907?text=Fix_Inquiry_Laptop_Restore" class="btn-uplink">REQUEST_RESTORE</a>
+            </div>
+
+            <div class="repair-node reveal">
+                <div class="flex justify-between items-start mb-10">
+                    <i class="fas fa-database text-3xl text-cyan-400"></i>
+                    <span class="status-dot online"></span>
+                </div>
+                <h3 class="boss-font text-xl mb-4">DATA_RECOVERY</h3>
+                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">
+                    Emergency extraction of data from failing HDDs, SSDS, and NVMe drives. We prioritize your privacy and data integrity.
+                </p>
+                <ul class="mono text-[10px] text-zinc-600 space-y-3 mb-10">
+                    <li>+ RAID RECOVERY</li>
+                    <li>+ CORRUPT PARTITION FIX</li>
+                    <li>+ DELETED FILE RETRIEVAL</li>
+                </ul>
+                <a href="https://wa.me/923351696907?text=Fix_Inquiry_Data_Recovery" class="btn-uplink">REQUEST_RECOVERY</a>
+            </div>
+
         </div>
+    </section>
 
-        <div class="mt-20 p-12 bg-white/5 border border-white/5 text-center">
-            <h2 class="boss-font text-xl mb-8">Is your digital system <span class="text-cyan-400">broken?</span></h2>
-            <a href="https://wa.me/923351696907?text=Technical_Audit_Request" class="inline-block bg-white text-black font-black boss-font text-[10px] px-12 py-5 hover:bg-cyan-400 transition-all">
-                INITIATE_DIAGNOSTIC_UPLINK
-            </a>
-        </div>
-
-    </main>
-
-    <footer class="py-10 text-center opacity-10 font-mono text-[8px] tracking-[20px] uppercase">
-        Tech Fixer // Systems Maintenance Node // 2026
+    <footer class="py-10 text-center opacity-30 mono text-[9px] tracking-[15px]">
+        FIX_PROTOCOL_NODE_2026
     </footer>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
-
 </html>
