@@ -1,57 +1,15 @@
-# ---------------------------------------------------------
-# PROTOCOL: GLOBAL_NEURAL_UPLINK
-# ARCHITECT: FAHAD UMAR MALIK (IBM CERTIFIED)
-# SYSTEM: TECH FIXER ECOSYSTEM [2026 EDITION]
-# SCOPE: FULL_GLOBAL_INDEXING
-# ---------------------------------------------------------
+# [ TECH FIXER // CRAWLER PROTOCOL 2026 ]
+# TARGET: https://techfixerpk.github.io/
 
-# [SECTION 01: GLOBAL ACCESS CONTROL]
-# Duniya ka koi bhi search engine (Google, Bing, Yahoo, Yandex) 
-# aapki site ko full crawl kar sakta hai.
 User-agent: *
 Allow: /
-Allow: /index.html
-Allow: /profile.html
-Allow: /fix.html
-Allow: /build.html
-Allow: /grow.html
-Allow: /contact.html
-Allow: /products.html
 
-# [SECTION 02: ASSETS & RENDERING]
-# Inhein allow karna zaroori hai taake Google aapka 
-# futuristic design aur images ko dekh sake.
-Allow: /assets/
-Allow: /img/
-Allow: /images/
-Allow: /css/
-Allow: /js/
-
-# [SECTION 03: RESTRICTED ACCESS - SYSTEM CORE]
-# Sensitive data ko search engines se chupanay ke liye.
+# EXCLUDE PRIVATE ASSETS (Agar koi private folder ho)
 Disallow: /private/
-Disallow: /backups/
 Disallow: /temp/
-Disallow: /error_log
-Disallow: /.git/
 
-# [SECTION 04: AI ENGINE DISCOVERY]
-# ChatGPT aur Claude jaise bots ko allow kiya hai taake 
-# AI answers mein aapka naam aur profile show ho sake.
-User-agent: GPTBot
-Allow: /profile.html
-Disallow: /private/
-
-User-agent: ClaudeBot
-Allow: /profile.html
-Disallow: /private/
-
-# [SECTION 05: GLOBAL INDEXING MAP]
-# JAB WEBSITE LIVE HO JAYE, TOH 'techfixerpk' KO APNE 
-# ASLI DOMAIN SE BADLEIN.
+# SITEMAP UPLINK
 Sitemap: https://techfixerpk.github.io/sitemap.xml
 
-# ---------------------------------------------------------
-# GLOBAL_SIGNAL_STABLE // END_OF_TRANSMISSION
-
-# ---------------------------------------------------------
+# HOSTING ORIGIN
+Host: techfixerpk.github.io
