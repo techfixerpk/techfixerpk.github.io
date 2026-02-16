@@ -196,44 +196,36 @@
         <section id="services" class="mb-48">
             <h2 class="boss-font text-2xl italic mb-16 opacity-30 tracking-[15px] text-center uppercase">Core_System_Functions</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                
-                <div class="max-ui-card p-12 group animate-reveal" style="animation-delay: 0.4s;">
-                    <div class="card-accent"></div>
-                    <div class="scanline"></div>
-                    <p class="mono text-[10px] text-zinc-600 mb-8 tracking-[5px]">NODE_01</p>
-                    <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">FIX.</h3>
-                    <p class="text-zinc-500 leading-relaxed mb-10 text-sm">Legacy system repair, technical audits, and infrastructure stabilization.</p>
-                    <div class="h-[1px] w-full bg-white/5 mb-8"></div>
-                    <a href="fix.html" class="mono text-[10px] text-cyan-400 flex items-center gap-3 hover:gap-5 transition-all">
-                        ACCESS_NODE <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-
-                <div class="max-ui-card p-12 group animate-reveal" style="animation-delay: 0.6s;">
-                    <div class="card-accent"></div>
-                    <div class="scanline"></div>
-                    <p class="mono text-[10px] text-zinc-600 mb-8 tracking-[5px]">NODE_02</p>
-                    <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">BUILD.</h3>
-                    <p class="text-zinc-500 leading-relaxed mb-10 text-sm">Custom workstation assembly, software development, and asset deployment.</p>
-                    <div class="h-[1px] w-full bg-white/5 mb-8"></div>
-                    <a href="build.html" class="mono text-[10px] text-cyan-400 flex items-center gap-3 hover:gap-5 transition-all">
-                        ACCESS_NODE <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-
-                <div class="max-ui-card p-12 group animate-reveal" style="animation-delay: 0.8s;">
-                    <div class="card-accent"></div>
-                    <div class="scanline"></div>
-                    <p class="mono text-[10px] text-zinc-600 mb-8 tracking-[5px]">NODE_03</p>
-                    <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">GROW.</h3>
-                    <p class="text-zinc-500 leading-relaxed mb-10 text-sm">Technical SEO, authority scaling, and market dominance protocols.</p>
-                    <div class="h-[1px] w-full bg-white/5 mb-8"></div>
-                    <a href="grow.html" class="mono text-[10px] text-cyan-400 flex items-center gap-3 hover:gap-5 transition-all">
-                        ACCESS_NODE <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-
-            </div>
+      <div class="max-ui-card p-12 relative">
+    <div class="scanline"></div>
+    <form action="https://formspree.io/f/techfixerpk@gmail.com" method="POST" class="space-y-8">
+        <div class="relative">
+            <label class="mono text-[8px] text-cyan-400 block mb-2">IDENT_NAME</label>
+            <input type="text" name="Name" required 
+                class="w-full bg-white/5 border-b border-white/10 py-3 px-2 focus:outline-none focus:border-cyan-400 transition-all font-mono text-sm text-white" 
+                placeholder="Ex: Salman_Khan">
+        </div>
+        <div class="relative">
+            <label class="mono text-[8px] text-cyan-400 block mb-2">IDENT_EMAIL</label>
+            <input type="email" name="Email" required 
+                class="w-full bg-white/5 border-b border-white/10 py-3 px-2 focus:outline-none focus:border-cyan-400 transition-all font-mono text-sm text-white" 
+                placeholder="Client@Domain.com">
+        </div>
+        <div class="relative">
+            <label class="mono text-[8px] text-cyan-400 block mb-2">PAYLOAD_MESSAGE</label>
+            <textarea name="Message" rows="4" required 
+                class="w-full bg-white/5 border-b border-white/10 py-3 px-2 focus:outline-none focus:border-cyan-400 transition-all font-mono text-sm text-white" 
+                placeholder="Type your technical requirements..."></textarea>
+        </div>
+        
+        <input type="hidden" name="_subject" value="New Technical Uplink from TECH FIXER!">
+        
+        <button type="submit" class="w-full btn-cyber flex justify-between items-center group">
+            <span>INITIALIZE_UPLINK</span>
+            <i class="fas fa-paper-plane group-hover:translate-x-2 transition-transform"></i>
+        </button>
+    </form>
+</div>
         </section>
 
         <section id="hardware" class="mb-48">
@@ -396,3 +388,4 @@
 
 </body>
 </html>
+
