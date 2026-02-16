@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECH FIXER | FIX • BUILD • GROW | UNIVERSAL NODE</title>
+    <title>TECH FIXER | FAHAD UMAR MALIK | OFFICIAL</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,70 +18,40 @@
             --border: rgba(0, 242, 255, 0.2);
         }
 
-        /* --- CORE ARCHITECTURE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; width: 100%; }
         .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* --- ALL DEVICE GRID --- */
+        /* --- UI ELEMENTS --- */
         .cyber-grid {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; inset: 0;
             background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 30px 30px; z-index: -1; opacity: 0.5;
+            background-size: 30px 30px; z-index: -1; opacity: 0.4;
         }
 
-        /* --- RESPONSIVE LOGO --- */
-        .logo-container { transition: 0.5s; width: 100%; max-width: 400px; margin: 0 auto; }
-        .master-logo { width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(0,242,255,0.3)); }
-
-        /* --- NAV SYSTEM --- */
-        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(15px); z-index: 5000; width: 100%; }
-        .nav-link { font-family: 'Syncopate'; font-size: 9px; letter-spacing: 2px; color: #fff; transition: 0.3s; }
+        .hero-title { font-size: clamp(3rem, 12vw, 13rem); line-height: 0.85; letter-spacing: -4px; }
+        
+        /* Navigation Links (White) */
+        .nav-link { font-family: 'Syncopate'; font-size: 10px; color: #fff; transition: 0.3s; letter-spacing: 2px; }
         .nav-link:hover { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
 
-        /* --- MOBILE MENU OVERLAY --- */
-        #mobile-menu {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95); 
-            z-index: 6000; display: none; flex-direction: column; 
-            align-items: center; justify-content: center; gap: 2rem;
-        }
-
-        /* --- DYNAMIC HERO TEXT --- */
-        .hero-title { 
-            font-size: clamp(3rem, 12vw, 14rem); 
-            line-height: 0.8; 
-            letter-spacing: -5px;
-        }
-
-        /* --- RESPONSIVE CARDS --- */
+        /* Industrial Box */
         .node-box {
             background: var(--panel); border: 1px solid var(--border);
-            padding: 2.5rem; transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            position: relative; overflow: hidden; height: 100%;
+            padding: 3rem 2rem; transition: 0.5s; position: relative;
         }
-        .node-box:hover { border-color: var(--neon); transform: translateY(-10px); background: rgba(0,242,255,0.06); }
+        .node-box:hover { border-color: var(--neon); transform: translateY(-10px); background: rgba(0,242,255,0.05); }
 
-        /* --- BUTTONS --- */
-        .btn-max {
-            border: 1px solid var(--neon); padding: 18px 30px;
-            color: var(--neon); background: transparent;
-            font-family: 'Syncopate'; font-size: 10px; cursor: pointer;
-            transition: 0.4s; width: 100%; text-align: center;
+        .btn-action {
+            border: 1px solid var(--neon); padding: 15px 25px;
+            color: var(--neon); font-family: 'Syncopate'; font-size: 10px;
+            transition: 0.4s; width: 100%; text-align: center; display: block;
         }
-        .btn-max:hover { background: var(--neon); color: #000; box-shadow: 0 0 30px var(--neon); }
+        .btn-action:hover { background: var(--neon); color: #000; box-shadow: 0 0 25px var(--neon); }
 
-        /* --- FORM OPTIMIZATION --- */
-        input, textarea {
-            width: 100%; background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border); padding: 15px;
-            color: #fff; font-family: 'JetBrains Mono'; outline: none;
-            transition: 0.3s;
-        }
-        input:focus, textarea:focus { border-color: var(--neon); background: rgba(0,242,255,0.05); }
-
-        /* --- HIDDEN REVEAL --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        /* Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -89,130 +59,117 @@
 
     <div class="cyber-grid"></div>
 
-    <div id="mobile-menu">
-        <button onclick="toggleMenu()" class="absolute top-10 right-10 text-3xl">&times;</button>
-        <a href="profile.html" class="boss-font text-xl">PROFILE</a>
-        <a href="services.html" class="boss-font text-xl">SERVICES</a>
-        <a href="products.html" class="boss-font text-xl">PRODUCTS</a>
-        <a href="contact.html" class="boss-font text-xl">CONTACT</a>
-    </div>
-
-    <nav class="fixed top-0 w-full py-5 px-6 md:px-12 flex justify-between items-center bg-black/80">
-        <div class="flex items-center gap-2">
-            <span class="boss-font text-[10px] text-cyan-400">TF_CORE</span>
+    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/90 backdrop-blur-md z-[5000]">
+        <div class="flex items-center gap-3">
+            <span class="boss-font text-[12px] tracking-widest text-white">TECH <span class="text-cyan-400">FIXER</span></span>
         </div>
         
-        <div class="hidden lg:flex gap-10 items-center">
+        <div class="hidden lg:flex gap-10">
             <a href="profile.html" class="nav-link">PROFILE</a>
             <a href="services.html" class="nav-link">SERVICES</a>
             <a href="products.html" class="nav-link">PRODUCTS</a>
             <a href="contact.html" class="nav-link">CONTACT</a>
         </div>
 
-        <button class="lg:hidden text-cyan-400" onclick="toggleMenu()">
-            <i class="fas fa-bars text-xl"></i>
-        </button>
+        <a href="https://wa.me/923351696907" class="btn-action !py-2 !px-4 !w-auto text-[8px]">WHATSAPP_UPLINK</a>
     </nav>
 
-    <header class="min-h-screen flex flex-col items-center justify-center px-6 pt-24 text-center">
-        <div class="logo-container mb-10 reveal">
-            <img src="logo.png" alt="TECH_FIXER" class="master-logo">
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <div class="reveal active mb-12">
+            <img src="logo.png" alt="TECH FIXER" class="w-[250px] md:w-[400px] mx-auto filter drop-shadow-[0_0_20px_rgba(0,242,255,0.3)]">
         </div>
-
-        <h1 class="boss-font hero-title italic mb-12">
-            FIX BUILD <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">GROW.</span>
+        
+        <h1 class="boss-font hero-title italic mb-10 reveal active">
+            FIX BUILD <br> <span class="text-transparent" style="-webkit-text-stroke: 1.5px var(--neon);">GROW.</span>
         </h1>
-
-        <p class="mono text-zinc-500 text-xs md:text-sm tracking-[5px] uppercase max-w-2xl mx-auto border-t border-white/5 pt-8">
-            Industrial Technical Node // Rawalpindi PK
+        
+        <p class="mono text-zinc-500 text-xs md:text-sm tracking-[8px] uppercase reveal active">
+            FAHAD UMAR MALIK // INDUSTRIAL NODE
         </p>
     </header>
 
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="node-box reveal" onclick="window.location.href='fix.html'">
-                <div class="flex justify-between mb-10">
-                    <i class="fas fa-microchip text-3xl text-cyan-400"></i>
-                    <span class="mono text-[9px] text-zinc-600">01</span>
-                </div>
-                <h2 class="boss-font text-3xl mb-4 italic">FIX.</h2>
-                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">Advanced hardware triage and component-level restoration. We specialize in GPU, Motherboard, and industrial PCB repair.</p>
-                <button class="btn-max">ACCESS_FIX</button>
-            </div>
-
-            <div class="node-box reveal" onclick="window.location.href='build.html'">
-                <div class="flex justify-between mb-10">
-                    <i class="fas fa-server text-3xl text-cyan-400"></i>
-                    <span class="mono text-[9px] text-zinc-600">02</span>
-                </div>
-                <h2 class="boss-font text-3xl mb-4 italic">BUILD.</h2>
-                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">Designing high-performance workstations for AI, Rendering, and Engineering. Custom liquid cooling and rack-mount setups.</p>
-                <button class="btn-max">ACCESS_BUILD</button>
-            </div>
-
-            <div class="node-box reveal" onclick="window.location.href='grow.html'">
-                <div class="flex justify-between mb-10">
-                    <i class="fas fa-chart-network text-3xl text-cyan-400"></i>
-                    <span class="mono text-[9px] text-zinc-600">03</span>
-                </div>
-                <h2 class="boss-font text-3xl mb-4 italic">GROW.</h2>
-                <p class="text-zinc-500 text-sm mb-10 leading-relaxed">Infrastructure scaling and technical authority dominance. SEO and system performance optimization for businesses.</p>
-                <button class="btn-max">ACCESS_GROW</button>
-            </div>
+    <section class="py-20 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="node-box reveal" onclick="location.href='fix.html'">
+            <i class="fas fa-tools text-3xl text-cyan-400 mb-8"></i>
+            <h3 class="boss-font text-2xl mb-4">FIX.</h3>
+            <p class="text-zinc-500 text-sm mb-10 font-light">Precision repair for elite hardware and optimization of legacy software systems.</p>
+            <span class="btn-action">ACCESS_PROTOCOL</span>
+        </div>
+        <div class="node-box reveal" onclick="location.href='build.html'">
+            <i class="fas fa-microchip text-3xl text-cyan-400 mb-8"></i>
+            <h3 class="boss-font text-2xl mb-4">BUILD.</h3>
+            <p class="text-zinc-500 text-sm mb-10 font-light">Custom workstation architecture and high-performance server deployment.</p>
+            <span class="btn-action">ACCESS_PROTOCOL</span>
+        </div>
+        <div class="node-box reveal" onclick="location.href='grow.html'">
+            <i class="fas fa-chart-line text-3xl text-cyan-400 mb-8"></i>
+            <h3 class="boss-font text-2xl mb-4">GROW.</h3>
+            <p class="text-zinc-500 text-sm mb-10 font-light">Authority scaling through technical SEO and infrastructure dominance.</p>
+            <span class="btn-action">ACCESS_PROTOCOL</span>
         </div>
     </section>
 
     <section class="py-20 px-6 border-t border-white/5">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h2 class="boss-font text-4xl mb-6">SECURE_CONTACT</h2>
-            <p class="mono text-zinc-500 text-[10px] mb-12 tracking-widest">TRANSMIT DATA TO TECHFIXERPK@GMAIL.COM</p>
-            
-            <form id="contactForm" action="https://formspree.io/f/xeelgbne" method="POST" class="grid gap-4">
-                <input type="text" name="name" required placeholder="NAME">
-                <input type="email" name="email" required placeholder="EMAIL">
-                <textarea name="message" rows="5" required placeholder="MESSAGE_PAYLOAD"></textarea>
-                <button type="submit" id="submitBtn" class="btn-max !bg-cyan-400 !text-black font-bold">TRANSMIT_DATA</button>
-                <div id="statusMsg" class="hidden mono text-green-400 text-[10px] mt-4">[ SUCCESS: FORM_CLEARED_UPLINK_OK ]</div>
-            </form>
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20">
+            <div>
+                <h2 class="boss-font text-4xl mb-6">SECURE_UPLINK</h2>
+                <p class="text-zinc-500 mb-10 mono text-sm">FAHAD UMAR MALIK | +92 335 1696907</p>
+                
+                <div class="flex gap-6 mb-12">
+                    <a href="https://www.linkedin.com/in/fahad-umar-malik/" target="_blank" class="w-12 h-12 border border-white/10 flex items-center justify-center hover:border-cyan-400 transition hover:text-cyan-400">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://business.facebook.com/latest/home/?asset_id=1010390342152585" target="_blank" class="w-12 h-12 border border-white/10 flex items-center justify-center hover:border-cyan-400 transition hover:text-cyan-400">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/923351696907" target="_blank" class="w-12 h-12 border border-white/10 flex items-center justify-center hover:border-cyan-400 transition hover:text-cyan-400">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="node-box">
+                <form id="contactForm" action="https://formspree.io/f/xeelgbne" method="POST" class="space-y-6">
+                    <input type="text" name="name" required placeholder="USER_IDENT" class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm">
+                    <input type="email" name="email" required placeholder="EMAIL_UPLINK" class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm">
+                    <textarea name="message" rows="4" required placeholder="DATA_PAYLOAD" class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm"></textarea>
+                    <button type="submit" id="submitBtn" class="btn-action">TRANSMIT_PAYLOAD</button>
+                    <div id="status" class="hidden mono text-[10px] text-green-400 mt-4 text-center animate-pulse">[ DATA_TRANSMITTED_OK ]</div>
+                </form>
+            </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center border-t border-white/5">
-        <p class="mono text-[8px] text-zinc-700 tracking-[10px]">© TECH_FIXER_NETWORK_2026</p>
+    <footer class="py-10 text-center border-t border-white/5 opacity-30 mono text-[9px] tracking-[15px]">
+        TECH_FIXER_NETWORK_2026
     </footer>
 
     <script>
-        // Menu Toggle
-        function toggleMenu() {
-            const m = document.getElementById('mobile-menu');
-            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        // Reveal Animation
-        const observer = new IntersectionObserver(entries => {
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-        }, {threshold: 0.1});
-        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // AJAX Form + Auto Clear
+        // Form Clear Logic
         const form = document.getElementById('contactForm');
         const btn = document.getElementById('submitBtn');
-        const msg = document.getElementById('statusMsg');
+        const status = document.getElementById('status');
 
         form.onsubmit = async (e) => {
             e.preventDefault();
-            btn.innerText = "TRANSMITTING...";
+            btn.innerText = "UPLOADING...";
             const data = new FormData(form);
-            const res = await fetch(form.action, {
+            const response = await fetch(form.action, {
                 method: 'POST',
                 body: data,
                 headers: { 'Accept': 'application/json' }
             });
-            if (res.ok) {
+            if (response.ok) {
                 form.reset(); // Yeh form khali kar dega
-                msg.classList.remove('hidden');
-                btn.innerText = "TRANSMIT_DATA";
-                setTimeout(() => msg.classList.add('hidden'), 5000);
+                status.classList.remove('hidden');
+                btn.innerText = "TRANSMIT_PAYLOAD";
+                setTimeout(() => status.classList.add('hidden'), 5000);
             }
         };
     </script>
