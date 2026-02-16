@@ -1,190 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONTACT | ESTABLISH UPLINK</title>
+    <title>CONTACT | TECH FIXER UPLINK</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
-        
-        :root { --neon: #00f2ff; --bg: #020202; }
-        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
-        .boss-font { font-family: 'Syncopate', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #020202; }
-        ::-webkit-scrollbar-thumb { background: var(--neon); }
-
-        /* Form Input Styling */
-        input, textarea, select {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            color: white !important;
-            transition: 0.4s;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--neon) !important;
-            outline: none;
-            background: rgba(0, 242, 255, 0.02) !important;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+        :root {
+            --neon: #00f2ff;
+            --bg: #010101;
+            --panel: rgba(255, 255, 255, 0.03);
+            --border: rgba(0, 242, 255, 0.15);
         }
 
-        .contact-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
-            border: 1px solid rgba(255,255,255,0.05);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .cyber-grid {
+            position: fixed; inset: 0;
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 40px 40px; z-index: -1; opacity: 0.3;
         }
 
-        option { background: #111; color: white; }
+        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(20px); z-index: 5000; }
+        .nav-link { font-family: 'Syncopate'; font-size: 10px; color: #fff; transition: 0.3s; letter-spacing: 2px; }
+        .nav-link:hover { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+
+        /* --- CONTACT CARDS --- */
+        .info-card {
+            background: var(--panel); border: 1px solid var(--border);
+            padding: 2.5rem; transition: 0.5s;
+        }
+        .info-card:hover { border-color: var(--neon); background: rgba(0,242,255,0.05); }
+
+        .input-field {
+            width: 100%; background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border); padding: 18px;
+            color: #fff; font-family: 'JetBrains Mono'; outline: none;
+            transition: 0.3s;
+        }
+        .input-field:focus { border-color: var(--neon); background: rgba(0,242,255,0.06); }
+
+        .btn-send {
+            background: transparent; border: 1px solid var(--neon);
+            padding: 20px; color: var(--neon); font-family: 'Syncopate';
+            font-size: 11px; width: 100%; transition: 0.4s; cursor: pointer;
+        }
+        .btn-send:hover { background: var(--neon); color: #000; box-shadow: 0 0 30px var(--neon); }
+
+        .map-container {
+            width: 100%; height: 400px; border: 1px solid var(--border);
+            filter: grayscale(1) invert(1) contrast(1.2); opacity: 0.6;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-[1000] bg-black/90 backdrop-blur-xl border-b border-white/5 px-10 py-6 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-<a href="index.html" class="boss-font text-xs tracking-tighter">TECH_<span class="text-cyan-400">FIXER</span></a>        </div>
-       <div class="hidden lg:flex gap-10 items-center">
-    <a href="index.html" class="font-mono text-[9px] tracking-[3px] opacity-40 hover:opacity-100 transition">HUB</a>
-    <a href="services.html" class="font-mono text-[9px] tracking-[3px] opacity-40 hover:opacity-100 transition">SERVICES</a>
-    <span class="font-mono text-[9px] tracking-[3px] text-cyan-400">CONTACT_STATION</span>
-</div>
+    <div class="cyber-grid"></div>
+
+    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/80">
+        <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
+        <div class="hidden lg:flex gap-10">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="services.html" class="nav-link">SERVICES</a>
+            <a href="products.html" class="nav-link">PRODUCTS</a>
+            <a href="profile.html" class="nav-link">PROFILE</a>
+        </div>
+        <a href="https://wa.me/923351696907" class="mono text-[10px] text-cyan-400">SECURE_LINK_ACTIVE</a>
     </nav>
 
-    <main class="pt-48 pb-32 container mx-auto px-6 max-w-7xl">
-        <div class="grid lg:grid-cols-2 gap-20">
+    <header class="pt-40 pb-20 px-6 text-center reveal">
+        <h1 class="boss-font text-5xl md:text-8xl italic mb-6">ESTABLISH_ <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">CONTACT.</span></h1>
+        <p class="mono text-zinc-500 text-xs tracking-[10px] uppercase">Fahad Umar Malik // Technical Lead</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 pb-40">
+        <div class="grid lg:grid-cols-2 gap-12">
             
-            <div>
-                <p id="system-status" class="font-mono text-cyan-400 text-xs tracking-[10px] uppercase mb-4 italic">// INITIALIZING_SIGNAL...</p>
-                <h1 class="boss-font text-5xl md:text-7xl italic font-black mb-8 leading-tight">ESTABLISH <br> UPLINK.</h1>
-                <p class="text-zinc-500 text-lg mb-12 max-w-md">Ready to optimize, build, or grow? Send your project parameters and our team will initiate a diagnostic response within 24 hours.</p>
+            <div class="space-y-8 reveal">
+                <div class="info-card">
+                    <p class="mono text-[10px] text-cyan-400 mb-2">WHATSAPP_UPLINK</p>
+                    <h3 class="boss-font text-2xl">+92 335 1696907</h3>
+                </div>
 
-                <div class="space-y-8">
-                    <div class="flex items-center gap-6 group">
-                        <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-400 transition">
-                            <i class="fab fa-whatsapp text-xl group-hover:text-cyan-400"></i>
-                        </div>
-                        <div>
-                            <p class="font-mono text-[10px] text-zinc-600 uppercase">Direct_Comms</p>
-                            <a href="https://wa.me/923351696907" target="_blank" class="text-lg hover:text-cyan-400 transition">+92 335 1696907</a>
-                        </div>
-                    </div>
+                <div class="info-card">
+                    <p class="mono text-[10px] text-cyan-400 mb-2">EMAIL_ADDRESS</p>
+                    <h3 class="boss-font text-2xl">techfixerpk@gmail.com</h3>
+                </div>
 
-                    <div class="flex items-center gap-6 group">
-                        <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-400 transition">
-                            <i class="far fa-envelope text-xl group-hover:text-cyan-400"></i>
-                        </div>
-                        <div>
-                            <p class="font-mono text-[10px] text-zinc-600 uppercase">Email_Uplink</p>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=techfixerpk@gmail.com" target="_blank" class="text-lg hover:text-cyan-400 transition">techfixerpk@gmail.com</a>
-                        </div>
-                    </div>
+                <div class="info-card">
+                    <p class="mono text-[10px] text-cyan-400 mb-2">GEO_LOCATION</p>
+                    <h3 class="boss-font text-2xl">Rawalpindi, Pakistan</h3>
+                </div>
+
+                <div class="flex gap-4">
+                    <a href="https://www.linkedin.com/in/fahad-umar-malik/" target="_blank" class="info-card flex-1 text-center hover:text-cyan-400"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                    <a href="https://business.facebook.com/latest/home/?asset_id=1010390342152585" target="_blank" class="info-card flex-1 text-center hover:text-cyan-400"><i class="fab fa-facebook-f text-2xl"></i></a>
                 </div>
             </div>
 
-            <div class="contact-card p-10 md:p-16 rounded-sm relative">
-                <div class="absolute top-0 right-0 p-4 font-mono text-[8px] opacity-20 text-cyan-400">STATION: ISB_NODE_01</div>
-                
-                <form id="booking-form" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block font-mono text-[10px] text-zinc-500 uppercase mb-2">Subject_Name</label>
-                            <input type="text" id="client-name" placeholder="John Doe" class="w-full p-4" required>
-                        </div>
-                        <div>
-                            <label class="block font-mono text-[10px] text-zinc-500 uppercase mb-2">Email_Address</label>
-                            <input type="email" id="client-email" placeholder="john@agency.com" class="w-full p-4" required>
-                        </div>
-                    </div>
-
+            <div class="info-card reveal">
+                <form id="contactForm" action="https://formspree.io/f/xeelgbne" method="POST" class="space-y-6">
                     <div>
-                        <label class="block font-mono text-[10px] text-zinc-500 uppercase mb-2">Service_Required</label>
-                        <select id="service-type" class="w-full p-4 bg-zinc-900 border border-white/10 text-zinc-400">
-                            <option value="FIX (System Optimization)">FIX (System Optimization)</option>
-                            <option value="BUILD (Web & Soft Dev)">BUILD (Web & Soft Dev)</option>
-                            <option value="GROW (SEO & Scaling)">GROW (SEO & Scaling)</option>
-                            <option value="PRODUCT (Inventory Inquiry)">PRODUCT (Inventory Inquiry)</option>
-                        </select>
+                        <label class="mono text-[10px] text-zinc-600 block mb-2 uppercase">Ident_User_Name</label>
+                        <input type="text" name="name" required class="input-field" placeholder="E.G. JOHN_DOE">
                     </div>
-
                     <div>
-                        <label class="block font-mono text-[10px] text-zinc-500 uppercase mb-2">Message_Payload</label>
-                        <textarea id="project-details" rows="5" placeholder="Describe your project goals..." class="w-full p-4" required></textarea>
+                        <label class="mono text-[10px] text-zinc-600 block mb-2 uppercase">Ident_Email_Uplink</label>
+                        <input type="email" name="email" required class="input-field" placeholder="NAME@EMAIL.COM">
                     </div>
-
-                    <button type="submit" id="transmit-btn" class="w-full bg-white text-black boss-font text-[11px] py-6 font-black hover:bg-cyan-400 transition-all tracking-[4px]">
-                        TRANSMIT_DATA
-                    </button>
+                    <div>
+                        <label class="mono text-[10px] text-zinc-600 block mb-2 uppercase">Data_Payload</label>
+                        <textarea name="message" rows="5" required class="input-field" placeholder="DESCRIBE YOUR TECHNICAL REQUIREMENT..."></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="btn-send">TRANSMIT_PAYLOAD</button>
+                    <div id="statusMsg" class="hidden mono text-[10px] text-green-400 text-center mt-4 animate-pulse">[ TRANSMISSION_SUCCESSFUL: FORM_CLEARED ]</div>
                 </form>
             </div>
 
         </div>
+
+        <div class="mt-20 reveal">
+            <p class="mono text-[10px] text-zinc-600 mb-4 uppercase">System_Location_Scan</p>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106307.76569726!2d72.964923!3d33.5651107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df948974419ac3%3A0x9c724438c3046bc!2sRawalpindi%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
     </main>
 
-    <footer class="py-10 text-center opacity-10 font-mono text-[8px] tracking-[20px] uppercase">
-        Tech Fixer // Secured Connection // 2026
+    <footer class="py-10 text-center opacity-30 mono text-[9px] tracking-[15px]">
+        TECH_FIXER_NETWORK_2026
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const bookingForm = document.getElementById('booking-form');
-            const statusBox = document.getElementById('system-status');
-            const transmitBtn = document.getElementById('transmit-btn');
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // 1. Live System Clock Status
-            setInterval(() => {
-                const time = new Date().toLocaleTimeString();
-                statusBox.innerHTML = `[${time}] <span class="text-cyan-400">ENCRYPTED_SIGNAL_STABLE</span>`;
-            }, 1000);
+        // AJAX Form Submission & Clearing
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('submitBtn');
+        const status = document.getElementById('statusMsg');
 
-            // 2. Form Submission to Gmail Direct Link
-            if (bookingForm) {
-                bookingForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    
-                    // UI Feedback
-                    transmitBtn.innerHTML = "GENERATING_GMAIL_UPLINK...";
-                    transmitBtn.style.background = "#00f2ff";
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            btn.innerText = "TRANSMITTING...";
+            btn.disabled = true;
 
-                    // Data Extraction
-                    const name = document.getElementById('client-name').value;
-                    const email = document.getElementById('client-email').value;
-                    const service = document.getElementById('service-type').value;
-                    const logs = document.getElementById('project-details').value;
+            const data = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
 
-                    // Parameters for Direct Gmail
-                    const myEmail = "techfixerpk@gmail.com";
-                    const subject = encodeURIComponent(`SERVICE_REQUEST: ${service} - ${name}`);
-                    const body = encodeURIComponent(
-                        `--- TECH_FIXER_UPLINK_REPORT ---\n` +
-                        `SENDER: ${name}\n` +
-                        `CLIENT_MAIL: ${email}\n` +
-                        `NODE_TYPE: ${service}\n` +
-                        `---------------------------------\n` +
-                        `LOGS:\n${logs}\n` +
-                        `---------------------------------\n` +
-                        `[END_OF_TRANSMISSION]`
-                    );
-
-                    // Final Gmail URL
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${myEmail}&su=${subject}&body=${body}`;
-
-                    // Execute Uplink
-                    setTimeout(() => {
-                        window.open(gmailUrl, '_blank');
-                        bookingForm.reset();
-                        transmitBtn.innerHTML = "TRANSMITTED_SUCCESSFULLY";
-                        transmitBtn.style.background = "#ffffff";
-                        
-                        setTimeout(() => { 
-                            transmitBtn.innerHTML = "TRANSMIT_DATA"; 
-                        }, 3000);
-                    }, 1200);
-                });
+            if (response.ok) {
+                form.reset(); // Yeh form ko khali kar dega
+                status.classList.remove('hidden');
+                btn.innerText = "TRANSMIT_PAYLOAD";
+                btn.disabled = false;
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    status.classList.add('hidden');
+                }, 5000);
+            } else {
+                alert("Critical Error: Uplink Interrupted.");
+                btn.innerText = "RETRY_TRANSMISSION";
+                btn.disabled = false;
             }
-        });
+        };
     </script>
 </body>
 </html>
