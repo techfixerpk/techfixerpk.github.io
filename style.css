@@ -1,263 +1,232 @@
-/* TECH FIXER - MASTER CSS (2026 EDITION)
-   DESIGNER: FAHAD UMAR MALIK (IBM CERTIFIED)
+/* PROJECT: TECH FIXER - UNIVERSAL UI
+   AUTHOR: GEMINI AI (2026 EDITION)
+   DESIGN: NEON-GLASSMOPHISM
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Space+Grotesk:wght@300;700;900&display=swap');
 
 :root {
+    /* Color Palette */
     --primary-cyan: #00f2ff;
     --primary-blue: #0062ff;
-    --bg-black: #030303;
-    --glass-white: rgba(255, 255, 255, 0.03);
-    --neon-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    --bg-black: #050505;
+    --card-glass: rgba(255, 255, 255, 0.03);
+    --border-glass: rgba(255, 255, 255, 0.1);
+    
+    /* Responsive Spacing */
+    --section-padding: clamp(3rem, 10vh, 8rem);
+    --container-width: 1300px;
+    
+    /* Animation Curve */
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* --- 1. Global Reset --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
     background-color: var(--bg-black);
-    color: white;
+    color: #ffffff;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* --- 1. Background "Matrix" Grid Effect --- */
+/* --- 2. Catching Background Graphics --- */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05), transparent 80%),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 40px 40px, 40px 40px;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(0, 98, 255, 0.08) 0%, transparent 40%),
+        linear-gradient(var(--border-glass) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-glass) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
     z-index: -1;
+    mask-image: radial-gradient(circle, black, transparent 90%);
 }
 
-/* --- 2. High-End Glassmorphism Navigation --- */
-.nav-master {
-    background: rgba(3, 3, 3, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    position: fixed;
-    width: 100%;
+/* --- 3. Fluid Grid Container --- */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+/* --- 4. Navigation (Responsive Glass) --- */
+nav {
+    position: sticky;
     top: 0;
     z-index: 1000;
+    padding: 1.2rem 0;
+    background: rgba(5, 5, 5, 0.6);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
 }
 
-/* --- 3. The "Impossible" Gradient Text --- */
-.heavy-text {
-    background: linear-gradient(135deg, #fff 0%, var(--primary-cyan) 50%, var(--primary-blue) 100%);
-    background-size: 200% auto;
-    background-image: linear-gradient(90deg, #00f2ff, #0062ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
-    animation: flow 5s ease infinite;
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    color: #fff;
 }
 
-@keyframes flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.logo span {
+    color: var(--primary-cyan);
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
 }
 
-/* --- 4. Cyber-Card (For FIX, BUILD, GROW) --- */
+/* --- 5. Hero Section (The "Heavy" Catching Text) --- */
+.hero {
+    padding: var(--section-padding) 0;
+    text-align: center;
+}
+
+.heavy-text {
+    font-family: 'Space Grotesk', sans-serif;
+    /* Font size adjust automatically for Mobile (2.5rem) to Desktop (6.5rem) */
+    font-size: clamp(2.5rem, 9vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+.sub-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #999;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+/* --- 6. Interactive Cyber Cards (Fluid Grid) --- */
+.services-grid {
+    display: grid;
+    /* Mobile par 1 column, Tablet/Desktop par automatic adjustment */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding-bottom: var(--section-padding);
+}
+
 .cyber-card {
-    background: var(--glass-white);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 24px;
+    background: var(--card-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 28px;
+    padding: 3rem 2rem;
+    transition: var(--ease);
+    text-align: left;
     position: relative;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.cyber-card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(transparent, var(--primary-cyan), transparent 30%);
-    animation: rotate 4s linear infinite;
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.cyber-card:hover::before {
-    opacity: 1;
 }
 
 .cyber-card:hover {
-    transform: scale(1.02) translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
     border-color: var(--primary-cyan);
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 242, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-/* Inner content of card to stay above animation */
-.card-content {
-    position: relative;
-    background: #080808;
-    border-radius: 20px;
-    padding: 1.5rem;
-    height: 100%;
-    z-index: 1;
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.cyber-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #fff;
 }
 
-/* --- 5. Magnetic Button --- */
+.cyber-card p {
+    color: #888;
+    font-size: 1rem;
+}
+
+/* --- 7. Catchy Buttons --- */
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap; /* Mobile par buttons stack ho jayenge */
+}
+
 .mag-btn {
-    background: white;
-    color: black;
-    padding: 14px 32px;
-    border-radius: 12px;
+    padding: 1.2rem 2.8rem;
+    border-radius: 100px;
     font-weight: 700;
-    border: none;
+    font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
-    position: relative;
+    transition: var(--ease);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.mag-btn:hover {
+.btn-cyan {
     background: var(--primary-cyan);
-    box-shadow: 0 0 25px var(--primary-cyan);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+.btn-cyan:hover {
     transform: scale(1.05);
+    background: #fff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
 }
 
-/* --- 6. Scroll Progress Bar --- */
-.progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(to right, var(--primary-cyan), var(--primary-blue));
-    z-index: 1001;
-}
-/* Ensure this is in your style.css */
-.heavy-text {
-    background-image: linear-gradient(90deg, #00f2ff, #0062ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    font-weight: 900;
+.btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid var(--border-glass);
 }
 
-.cyber-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.5s ease;
-    border-radius: 20px;
+.btn-outline:hover {
+    background: var(--border-glass);
 }
 
-.cyber-card:hover {
-    border-color: #00f2ff;
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
-    transform: translateY(-10px);
+/* --- 8. Responsive Media Queries (Extra Polish) --- */
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+    .heavy-text {
+        letter-spacing: -1px; /* Mobile par readable rakhta hai */
+    }
+    
+    .cyber-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .mag-btn {
+        width: 100%; /* Mobile par full width buttons */
+    }
 }
-/* --- Global Fix: Is se padding width se bahar nahi niklay gi --- */
-* {
-    box-sizing: border-box;
-        margin: 0;
-            padding: 0;
-            }
 
-            /* --- Mobile Specific CSS (Jab screen 768px se kam ho) --- */
-            @media screen and (max-width: 768px) {
-                
-                    /* 1. Body and Container: Horizontal scroll khatam karne ke liye */
-                        body {
-                                overflow-x: hidden;
-                                        width: 100%;
-                                            }
+/* Tablet Devices */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-                                                section {
-                                                        width: 90% !important; /* Aapne 90% kaha tha, wahi rakha hai */
-                                                                margin: 0 auto;
-                                                                        float: none; /* Floats ko khatam karta hai */
-                                                                            }
-
-                                                                                /* 2. Flexbox Fix: Agar items side-by-side hain toh unhein upar-neeche kar dega */
-                                                                                    .row, .flex-container, nav {
-                                                                                            display: flex;
-                                                                                                    flex-direction: column !important;
-                                                                                                            align-items: center;
-                                                                                                                }
-
-                                                                                                                    /* 3. Images: Kabhi bhi screen se bahar nahi jayengi */
-                                                                                                                        img {
-                                                                                                                                max-width: 100%;
-                                                                                                                                        height: auto;
-                                                                                                                                                display: block;
-                                                                                                                                                        margin: 10px auto;
-                                                                                                                                                            }
-
-                                                                                                                                                                /* 4. Columns Fix: Agar aapne 33% ya 50% width di hai toh mobile par 100% ho jaye */
-                                                                                                                                                                    .col, .box, .sidebar, .content {
-                                                                                                                                                                            width: 100% !important;
-                                                                                                                                                                                    margin-bottom: 20px;
-                                                                                                                                                                                        }
-
-                                                                                                                                                                                            /* 5. Typography: Fonts ko adjust karein taake parhne mein asani ho */
-                                                                                                                                                                                                h1 {
-                                                                                                                                                                                                        font-size: 28px !important;
-                                                                                                                                                                                                                text-align: center;
-                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                        
-                                                                                                                                                                                                                            p {
-                                                                                                                                                                                                                                    font-size: 16px !important;
-                                                                                                                                                                                                                                            line-height: 1.6;
-                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                @media screen and (max-width: 768px) {
-                                                                                                                                                                                                                                                        /* 1. Navbar ka main container */
-                                                                                                                                                                                                                                                            nav, .navbar, .nav-container {
-                                                                                                                                                                                                                                                                    display: flex;
-                                                                                                                                                                                                                                                                            flex-direction: column; /* Items ko upar-niche karne ke liye */
-                                                                                                                                                                                                                                                                                    height: auto; /* Height fix na ho taake menu lamba ho sake */
-                                                                                                                                                                                                                                                                                            padding: 20px 0;
-                                                                                                                                                                                                                                                                                                }
-
-                                                                                                                                                                                                                                                                                                    /* 2. List ya links wala hissa (Services, Contact, etc.) */
-                                                                                                                                                                                                                                                                                                        nav ul, .nav-links, .menu-items {
-                                                                                                                                                                                                                                                                                                                display: flex;
-                                                                                                                                                                                                                                                                                                                        flex-direction: column; /* List items ko vertical karein */
-                                                                                                                                                                                                                                                                                                                                width: 100%;
-                                                                                                                                                                                                                                                                                                                                        padding: 0;
-                                                                                                                                                                                                                                                                                                                                                text-align: center; /* Text beech mein aa jaye */
-                                                                                                                                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                                                                                                                                        /* 3. Har link (li ya a tag) ko thori jagah dein */
-                                                                                                                                                                                                                                                                                                                                                            nav ul li, .nav-links a {
-                                                                                                                                                                                                                                                                                                                                                                    width: 100%;
-                                                                                                                                                                                                                                                                                                                                                                            margin: 10px 0; /* Upar-niche thori space */
-                                                                                                                                                                                                                                                                                                                                                                                    display: block;
-                                                                                                                                                                                                                                                                                                                                                                                        }
-
-                                                                                                                                                                                                                                                                                                                                                                                            /* 4. Agar koi button hai navbar mein */
-                                                                                                                                                                                                                                                                                                                                                                                                .nav-btn {
-                                                                                                                                                                                                                                                                                                                                                                                                        width: 80%;
-                                                                                                                                                                                                                                                                                                                                                                                                                margin: 10px auto;
-                                                                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                                                                
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
