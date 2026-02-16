@@ -21,7 +21,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+// --- MOBILE MENU TOGGLE ---
+const navToggle = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
 
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        // 'hidden' class ko remove/add karega aur 'flex' ko toggle karega
+        navMenu.classList.toggle('hidden');
+        navMenu.classList.toggle('flex');
+    });
+
+    // Menu ke kisi link par click ho toh menu band ho jaye
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.add('hidden');
+            navMenu.classList.remove('flex');
+        });
+    });
+}
     // --- 3. DYNAMIC FORM HANDLING (FORMSPREE) ---
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -95,15 +113,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/* --- MOBILE MENU FIX --- */
-@media (max-width: 1024px) {
-    #nav-menu.flex {
-        display: flex !important;
-        animation: navSlideDown 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-}
 
-@keyframes navSlideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
