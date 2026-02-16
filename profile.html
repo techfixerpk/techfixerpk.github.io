@@ -3,41 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROFILE | FAHAD UMAR MALIK | TECH FIXER LEAD</title>
+    <title>FOUNDER_CORE | FAHAD UMAR MALIK | TECH FIXER</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* --- PROFILE SPECIFIC STYLES --- */
+        .profile-header { background: linear-gradient(to bottom, rgba(0,242,255,0.05) 0%, transparent 100%); }
+        .stat-box { border-left: 2px solid var(--neon); background: rgba(255,255,255,0.02); padding: 20px; }
         .pfp-container {
-            width: 250px; height: 250px; border: 1px solid var(--neon); 
-            padding: 8px; position: relative; margin: 0 auto;
-            background: rgba(0, 242, 255, 0.05);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-            overflow: hidden;
+            width: 280px; height: 280px; border: 1px solid var(--neon); 
+            padding: 10px; position: relative; margin: 0 auto;
+            background: #000; box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
         }
-
-        .pfp-image {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(0.5) contrast(1.1); transition: 0.5s;
-        }
-
-        .pfp-container:hover .pfp-image { filter: grayscale(0); transform: scale(1.05); }
-
-        .skill-node { margin-bottom: 25px; }
-        .skill-bar-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.05); margin-top: 10px; }
-        .skill-bar-fill { height: 100%; background: var(--neon); box-shadow: 0 0 15px var(--neon); }
-
-        .experience-card {
-            border-left: 1px solid var(--neon);
-            padding: 0 0 40px 30px; position: relative;
-        }
-        .experience-card::before {
-            content: ''; position: absolute; left: -5px; top: 0;
-            width: 10px; height: 10px; background: var(--neon);
-        }
+        .pfp-image { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1); }
+        .badge { font-size: 8px; border: 1px solid var(--neon); padding: 2px 8px; color: var(--neon); margin-right: 5px; }
     </style>
 </head>
 <body>
@@ -46,56 +27,88 @@
 
     <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/90 border-b border-cyan-400/20 z-[6000]">
         <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
-        
-        <button id="nav-toggle" class="lg:hidden text-cyan-400 text-2xl outline-none">
-            <i class="fas fa-bars"></i>
-        </button>
-
+        <button id="nav-toggle" class="lg:hidden text-cyan-400 text-2xl"><i class="fas fa-bars"></i></button>
         <div id="nav-menu" class="hidden absolute top-full left-0 w-full bg-black/95 flex-col p-10 gap-8 lg:static lg:flex lg:flex-row lg:w-auto lg:p-0 lg:bg-transparent">
             <a href="index.html" class="nav-link">HOME</a>
             <a href="services.html" class="nav-link">SERVICES</a>
             <a href="products.html" class="nav-link">PRODUCTS</a>
+            <a href="sitemap.html" class="nav-link">SITEMAP</a>
             <a href="contact.html" class="nav-link">CONTACT</a>
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 px-6 max-w-5xl mx-auto text-center">
-        <div class="pfp-container mb-12 reveal">
-            <img src="your-photo.png" alt="Fahad Umar Malik" class="pfp-image" onerror="this.src='https://via.placeholder.com/250x250/111/00f2ff?text=PHOTO+NOT+FOUND'">
+    <header class="pt-48 pb-20 px-6 max-w-6xl mx-auto profile-header">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <div class="pfp-container mb-8">
+                    <img src="your-photo.png" alt="Fahad Umar Malik" class="pfp-image" onerror="this.src='https://via.placeholder.com/300x300/111/00f2ff?text=FOUNDER_IMG'">
+                </div>
+                <div class="flex justify-center gap-4">
+                    <a href="https://github.com/techfixerpk" class="text-zinc-500 hover:text-cyan-400 text-xl"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/fahad-umar-malik/" class="text-zinc-500 hover:text-cyan-400 text-xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/923351696907" class="text-zinc-500 hover:text-cyan-400 text-xl"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="reveal">
+                <span class="mono text-cyan-400 text-xs tracking-widest">[ IDENTITY_VERIFIED ]</span>
+                <h1 class="boss-font text-5xl md:text-7xl italic mt-4 mb-2">F. UMAR <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">MALIK</span></h1>
+                <p class="mono text-zinc-400 mb-8">System Architect | PCB Diagnostics Expert | SEO Strategist</p>
+                
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="stat-box">
+                        <span class="boss-font text-xl text-white">500+</span>
+                        <p class="mono text-[9px] text-zinc-500 uppercase">Systems_Restored</p>
+                    </div>
+                    <div class="stat-box">
+                        <span class="boss-font text-xl text-white">150+</span>
+                        <p class="mono text-[9px] text-zinc-500 uppercase">Custom_Builds</p>
+                    </div>
+                </div>
+
+                <p class="text-zinc-400 leading-relaxed font-light mb-8">
+                    Dominating the tech landscape of Rawalpindi & Islamabad since 2021. Specializing in high-end GPU restoration, component-level motherboard repair, and enterprise-grade digital infrastructure. We don't just fix; we re-engineer.
+                </p>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge">NVIDIA_CERTIFIED_LEVEL_3</span>
+                    <span class="badge">MICRO_SOLDERING_PRO</span>
+                    <span class="badge">SEO_INFRASTRUCTURE</span>
+                </div>
+            </div>
         </div>
-        
-        <h1 class="boss-font text-4xl md:text-6xl italic mb-4">FAHAD UMAR <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">MALIK.</span></h1>
-        <p class="mono text-cyan-400 text-xs tracking-[8px] uppercase mb-12">Lead Systems Architect & Founder</p>
-        
-        <p class="text-zinc-500 text-lg leading-relaxed font-light reveal">
-            With a focus on industrial-grade technical restoration and high-performance workstation design, I lead Tech Fixer in providing the most sophisticated technical solutions in the Rawalpindi/Islamabad region.
-        </p>
     </header>
 
-    <section class="py-20 px-6 max-w-4xl mx-auto grid md:grid-cols-2 gap-16">
-        <div class="reveal">
-            <h3 class="boss-font text-xl mb-10 border-b border-white/5 pb-4 italic">TECH_SKILLS</h3>
-            <div class="skill-node">
-                <div class="flex justify-between mono text-[10px]"><span>HARDWARE_DIAGNOSTICS</span><span>95%</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+    <section class="py-20 px-6 max-w-6xl mx-auto border-t border-white/5">
+        <h2 class="boss-font text-2xl mb-16 text-center italic underline decoration-cyan-400">CORE_COMPETENCIES</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+            
+            <div class="node-box reveal">
+                <i class="fas fa-microchip text-cyan-400 mb-4 text-2xl"></i>
+                <h3 class="boss-font text-sm mb-4">PCB_ENGINEERING</h3>
+                <p class="text-zinc-500 text-xs leading-loose">Advanced diagnostics of multi-layer circuit boards, VRM repair, and VRAM replacement for high-performance GPUs.</p>
             </div>
-            <div class="skill-node">
-                <div class="flex justify-between mono text-[10px]"><span>SYSTEM_ARCHITECTURE</span><span>90%</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
-            </div>
-            <div class="skill-node">
-                <div class="flex justify-between mono text-[10px]"><span>TECHNICAL_SEO</span><span>85%</span></div>
-                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
-            </div>
-        </div>
 
-        <div class="reveal">
-            <h3 class="boss-font text-xl mb-10 border-b border-white/5 pb-4 italic">EXPERIENCE_LOG</h3>
-            <div class="experience-card">
-                <h4 class="boss-font text-sm text-white">FOUNDER @ TECH FIXER</h4>
-                <p class="mono text-[10px] text-cyan-400 mb-2">2023 - PRESENT</p>
-                <p class="text-zinc-500 text-xs">Leading all technical operations and customer acquisition.</p>
+            <div class="node-box reveal">
+                <i class="fas fa-server text-cyan-400 mb-4 text-2xl"></i>
+                <h3 class="boss-font text-sm mb-4">NETWORK_NODES</h3>
+                <p class="text-zinc-500 text-xs leading-loose">Deployment of secure home/office server environments and high-speed local network architecture.</p>
             </div>
+
+            <div class="node-box reveal">
+                <i class="fas fa-search-dollar text-cyan-400 mb-4 text-2xl"></i>
+                <h3 class="boss-font text-sm mb-4">MARKET_SCALING</h3>
+                <p class="text-zinc-500 text-xs leading-loose">Leveraging Technical SEO and digital presence to scale local businesses into regional authorities.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-32 px-6 text-center bg-cyan-400/5">
+        <h2 class="boss-font text-3xl mb-8 italic">NEED_A_FIXER?</h2>
+        <div class="flex flex-wrap justify-center gap-6">
+            <a href="contact.html" class="btn-max">INITIATE_UPLINK</a>
+            <a href="https://wa.me/923351696907?text=Urgent_Repair_Request" class="btn-max border-white text-white hover:bg-white">URGENT_WHATSAPP</a>
         </div>
     </section>
 
