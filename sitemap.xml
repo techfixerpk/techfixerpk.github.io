@@ -12,7 +12,7 @@
     </url>
 
     <url>
-        <loc>https://techfixer.pk/profile.html</loc>
+        <loc>https://techfixerpk.github.io/profile.html</loc>
         <lastmod>2026-02-16T04:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
@@ -24,35 +24,35 @@
     </url>
 
     <url>
-        <loc>https://techfixer.pk/fix.html</loc>
+        <loc>https://techfixerpk.github.io/fix.html</loc>
         <lastmod>2026-02-16T04:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://techfixer.pk/build.html</loc>
+        <loc>https://techfixerpk.github.io/build.html</loc>
         <lastmod>2026-02-16T04:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://techfixer.pk/grow.html</loc>
+        <loc>https://techfixerpk.github.io/grow.html</loc>
         <lastmod>2026-02-16T04:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://techfixer.pk/products.html</loc>
+        <loc>https://techfixerpk.github.io/products.html</loc>
         <lastmod>2026-02-16T04:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.98</priority>
     </url>
 
     <url>
-        <loc>https://techfixer.pk/contact.html</loc>
+        <loc>https://techfixerpk.github.io/contact.html</loc>
         <lastmod>2026-02-16T04:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
@@ -60,3 +60,4 @@
 
 
 </urlset>
+
