@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECH FIXER | FIX • BUILD • GROW | OFFICIAL 2026</title>
+    <title>TECH FIXER | FIX • BUILD • GROW | MASTER_V3</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,345 +19,187 @@
             --border: rgba(255, 255, 255, 0.08);
         }
 
-        /* 🌌 CORE STYLING */
         body {
             background-color: var(--bg);
             color: #ffffff;
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
         .boss-font { font-family: 'Syncopate', sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* 🧬 CYBER ANIMATIONS */
-        @keyframes scanline {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(1000%); }
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* 🔳 ARCHITECTURAL GRID */
+        /* 🔳 GRID & ANIMATION */
         .grid-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(var(--neon-dim) 1px, transparent 1px),
-                linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: -2;
-            mask-image: radial-gradient(circle at 50% 50%, black, transparent 85%);
+            background-image: linear-gradient(var(--neon-dim) 1px, transparent 1px), linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
+            background-size: 50px 50px; z-index: -2;
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent 90%);
         }
 
-        /* 💎 COMPONENT ARCHITECTURE */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
         .max-ui-card {
             background: var(--panel);
             border: 1px solid var(--border);
-            backdrop-filter: blur(12px);
-            position: relative; overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            backdrop-filter: blur(15px);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .max-ui-card:hover {
             border-color: var(--neon);
-            background: rgba(0, 242, 255, 0.04);
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.9), 0 0 30px var(--neon-dim);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        .scanner {
-            position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon), transparent);
-            animation: scanline 5s linear infinite;
-            opacity: 0;
-        }
-        .max-ui-card:hover .scanner { opacity: 0.4; }
-
-        /* 🔗 NAVIGATION LOGIC */
         .nav-link {
-            font-family: 'Syncopate'; font-size: 10px; letter-spacing: 4px;
-            color: rgba(255, 255, 255, 0.5); transition: 0.4s;
+            font-family: 'Syncopate'; font-size: 9px; letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.4); transition: 0.4s;
         }
-        .nav-link:hover { color: var(--neon); text-shadow: 0 0 8px var(--neon); }
+        .nav-link:hover { color: var(--neon); }
 
-        /* 🔘 INTERACTIVE BUTTONS */
         .cyber-btn {
             border: 1px solid var(--neon);
-            padding: 16px 32px;
-            font-family: 'Syncopate'; font-size: 11px;
+            padding: 12px 24px;
+            font-family: 'Syncopate'; font-size: 10px;
             color: var(--neon);
-            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            position: relative; overflow: hidden;
-            background: transparent;
-            text-transform: uppercase;
+            transition: 0.4s;
         }
-        .cyber-btn:hover {
-            background: var(--neon);
-            color: #000;
-            box-shadow: 0 0 40px var(--neon);
-            transform: scale(1.05);
-        }
+        .cyber-btn:hover { background: var(--neon); color: black; box-shadow: 0 0 20px var(--neon); }
 
-        /* 📱 MOBILE OVERLAY */
-        #mobile-menu {
-            transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-            transform: translateX(100%);
+        #system-log {
+            height: 150px;
+            background: rgba(0,0,0,0.8);
+            border-top: 1px solid var(--border);
+            overflow-y: hidden;
         }
-        #mobile-menu.active { transform: translateX(0); }
     </style>
 </head>
 <body>
 
     <div class="grid-layer"></div>
 
-    <nav class="fixed top-0 w-full z-[2000] border-b border-white/5 bg-black/80 backdrop-blur-3xl py-8 px-10 lg:px-20 flex justify-between items-center">
-        <div class="flex items-center gap-8">
-            <img src="logo.png" alt="TECH_FIXER" class="h-10 md:h-12 brightness-110">
-            <div class="hidden md:block h-10 w-[1px] bg-white/10"></div>
-            <span class="boss-font text-[14px] tracking-tight italic">TECH <span class="text-cyan-400">FIXER</span></span>
+    <nav class="fixed top-0 w-full z-[1000] border-b border-white/5 bg-black/80 backdrop-blur-xl py-6 px-10 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <img src="logo.png" alt="TECH_FIXER" class="h-8">
+            <span class="boss-font text-[12px] italic tracking-tighter">TECH <span class="text-cyan-400">FIXER</span></span>
         </div>
 
-        <div class="hidden lg:flex items-center gap-16">
-            <a href="#hub" class="nav-link">HUB</a>
+        <div class="hidden lg:flex items-center gap-10">
+            <a href="#profile" class="nav-link">PROFILE</a>
             <a href="#services" class="nav-link">SERVICES</a>
-            <a href="#hardware" class="nav-link">HARDWARE</a>
-            <a href="#contact" class="cyber-btn">INITIALIZE_CONTACT</a>
+            <a href="#hardware" class="nav-link">PRODUCTS</a>
+            <a href="#contact" class="nav-link">CONTACT</a>
+            <a href="https://wa.me/923351696907" class="cyber-btn">UPLINK_WA</a>
         </div>
 
-        <button class="lg:hidden text-cyan-400 text-3xl" onclick="toggleMenu()">
-            <i class="fas fa-bars-staggered"></i>
+        <button class="lg:hidden text-cyan-400" onclick="document.getElementById('m-menu').classList.toggle('hidden')">
+            <i class="fas fa-bars"></i>
         </button>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-black z-[2001] flex flex-col items-center justify-center gap-12 lg:hidden">
-        <button class="absolute top-10 right-10 text-5xl text-cyan-400" onclick="toggleMenu()">&times;</button>
-        <a href="#hub" class="boss-font text-3xl" onclick="toggleMenu()">HUB</a>
-        <a href="#services" class="boss-font text-3xl" onclick="toggleMenu()">SERVICES</a>
-        <a href="#hardware" class="boss-font text-3xl" onclick="toggleMenu()">HARDWARE</a>
-        <a href="#contact" class="cyber-btn text-xl" onclick="toggleMenu()">CONTACT_UPLINK</a>
+    <div id="m-menu" class="hidden fixed inset-0 bg-black z-[1001] flex flex-col items-center justify-center gap-8">
+        <a href="#profile" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">PROFILE</a>
+        <a href="#services" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">SERVICES</a>
+        <a href="#hardware" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">PRODUCTS</a>
+        <a href="#contact" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">CONTACT</a>
     </div>
 
-    <section id="hub" class="min-h-screen flex flex-col justify-center px-10 lg:px-20">
-        <div class="reveal active">
-            <div class="flex items-center gap-6 mb-10">
-                <span class="h-[1px] w-24 bg-cyan-400"></span>
-                <p class="mono text-cyan-400 text-sm tracking-[12px] uppercase animate-pulse">Connection_Secure_2026</p>
-            </div>
-            
-            <h1 class="boss-font text-6xl sm:text-8xl md:text-[11rem] font-black italic leading-[0.8] mb-16 tracking-tighter">
-                FIX_BUILD <br> 
-                <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">GROW.</span>
+    <main class="container mx-auto px-10 pt-40">
+        
+        <section id="profile" class="min-h-[70vh] flex flex-col justify-center reveal active">
+            <h1 class="boss-font text-6xl md:text-[9rem] font-black italic leading-[0.85] mb-10">
+                FIX_BUILD <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">GROW.</span>
             </h1>
-
-            <div class="grid lg:grid-cols-2 gap-20 items-end">
-                <p class="text-zinc-500 text-xl md:text-2xl font-light leading-relaxed max-w-2xl border-l-4 border-cyan-400 pl-10">
-                    Premium engineering solutions for the digital age. We repair critical systems, build high-tier assets, and scale your technical authority globally.
-                </p>
-                <div class="flex gap-12">
-                    <div>
-                        <p class="boss-font text-4xl text-white">100%</p>
-                        <p class="mono text-[10px] text-zinc-600 uppercase tracking-widest mt-2">Precision_Rate</p>
-                    </div>
-                    <div>
-                        <p class="boss-font text-4xl text-cyan-400">24/7</p>
-                        <p class="mono text-[10px] text-zinc-600 uppercase tracking-widest mt-2">Active_Uplink</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-40 px-10 lg:px-20 border-y border-white/5">
-        <div class="text-center mb-32 reveal">
-            <h2 class="boss-font text-4xl italic mb-6">CORE_SYSTEMS</h2>
-            <p class="mono text-[11px] text-zinc-500 tracking-[15px] uppercase">Service_Protocol_Nodes</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="max-ui-card p-14 group reveal">
-                <div class="scanner"></div>
-                <p class="mono text-[11px] text-zinc-700 mb-10 tracking-[6px]">NODE_01</p>
-                <h3 class="boss-font text-3xl mb-8 italic text-white group-hover:text-cyan-400 transition">FIX.</h3>
-                <p class="text-zinc-500 text-base mb-14 leading-loose">Comprehensive hardware diagnostics, software troubleshooting, and legacy code restoration.</p>
-                <a href="https://wa.me/923351696907" class="cyber-btn block text-center">ACCESS_REPAIR</a>
-            </div>
-
-            <div class="max-ui-card p-14 group reveal" style="transition-delay: 0.2s;">
-                <div class="scanner"></div>
-                <p class="mono text-[11px] text-zinc-700 mb-10 tracking-[6px]">NODE_02</p>
-                <h3 class="boss-font text-3xl mb-8 italic text-white group-hover:text-cyan-400 transition">BUILD.</h3>
-                <p class="text-zinc-500 text-base mb-14 leading-loose">High-tier workstation architecture, neural-engine development, and custom rig deployment.</p>
-                <a href="https://wa.me/923351696907" class="cyber-btn block text-center">ACCESS_BUILD</a>
-            </div>
-
-            <div class="max-ui-card p-14 group reveal" style="transition-delay: 0.4s;">
-                <div class="scanner"></div>
-                <p class="mono text-[11px] text-zinc-700 mb-10 tracking-[6px]">NODE_03</p>
-                <h3 class="boss-font text-3xl mb-8 italic text-white group-hover:text-cyan-400 transition">GROW.</h3>
-                <p class="text-zinc-500 text-base mb-14 leading-loose">Technical SEO dominance, global authority scaling, and market expansion strategies.</p>
-                <a href="https://wa.me/923351696907" class="cyber-btn block text-center">ACCESS_GROWTH</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="hardware" class="py-40 px-10 lg:px-20">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-24 reveal gap-8">
-            <div>
-                <h2 class="boss-font text-5xl italic mb-6">ELITE_HARDWARE</h2>
-                <div class="h-2 w-32 bg-cyan-400"></div>
-            </div>
-            <p class="mono text-[11px] text-zinc-600 tracking-widest uppercase">Global_Inventory_Sync: Active</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            <a href="https://wa.me/923351696907?text=INQUIRY:_CORE_X_ENGINE" target="_blank" class="max-ui-card p-10 group reveal">
-                <i class="fas fa-microchip text-4xl text-zinc-800 mb-12 group-hover:text-cyan-400 group-hover:rotate-90 transition-all duration-700"></i>
-                <h4 class="boss-font text-[14px] mb-4">CORE_X_ENGINE</h4>
-                <p class="mono text-[10px] text-zinc-500 mb-10 uppercase tracking-tighter">Neural Processor X-100</p>
-                <div class="flex justify-between items-center pt-8 border-t border-white/5">
-                    <span class="text-cyan-400 font-bold text-xl">$450</span>
-                    <span class="mono text-[10px] text-zinc-600 group-hover:text-white transition">ORDER_WA</span>
-                </div>
-            </a>
-
-            <a href="https://wa.me/923351696907?text=INQUIRY:_NEON_STRIKE_Z" target="_blank" class="max-ui-card p-10 group reveal" style="transition-delay: 0.1s;">
-                <i class="fas fa-memory text-4xl text-zinc-800 mb-12 group-hover:text-cyan-400 transition-all duration-700"></i>
-                <h4 class="boss-font text-[14px] mb-4">NEON_STRIKE_Z</h4>
-                <p class="mono text-[10px] text-zinc-500 mb-10 uppercase tracking-tighter">Liquid-Cooled Graphics Engine</p>
-                <div class="flex justify-between items-center pt-8 border-t border-white/5">
-                    <span class="text-cyan-400 font-bold text-xl">$899</span>
-                    <span class="mono text-[10px] text-zinc-600">ORDER_WA</span>
-                </div>
-            </a>
-
-            <a href="https://wa.me/923351696907?text=INQUIRY:_QUANTUM_HUB" target="_blank" class="max-ui-card p-10 group reveal" style="transition-delay: 0.2s;">
-                <i class="fas fa-server text-4xl text-zinc-800 mb-12 group-hover:text-cyan-400 transition-all duration-700"></i>
-                <h4 class="boss-font text-[14px] mb-4">QUANTUM_HUB</h4>
-                <p class="mono text-[10px] text-zinc-500 mb-10 uppercase tracking-tighter">Encrypted Cold Storage Unit</p>
-                <div class="flex justify-between items-center pt-8 border-t border-white/5">
-                    <span class="text-cyan-400 font-bold text-xl">$1200</span>
-                    <span class="mono text-[10px] text-zinc-600">ORDER_WA</span>
-                </div>
-            </a>
-
-            <a href="https://wa.me/923351696907?text=INQUIRY:_TECH_FIXER_RIG" target="_blank" class="max-ui-card p-10 group reveal" style="transition-delay: 0.3s;">
-                <i class="fas fa-desktop text-4xl text-zinc-800 mb-12 group-hover:text-cyan-400 transition-all duration-700"></i>
-                <h4 class="boss-font text-[14px] mb-4">TECH_FIXER_RIG</h4>
-                <p class="mono text-[10px] text-zinc-500 mb-10 uppercase tracking-tighter">S-Tier AI Master Workstation</p>
-                <div class="flex justify-between items-center pt-8 border-t border-white/5">
-                    <span class="text-cyan-400 font-bold text-xl">$2500</span>
-                    <span class="mono text-[10px] text-zinc-600">ORDER_WA</span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <section id="contact" class="py-40 px-10 lg:px-20 bg-white/[0.01] border-t border-white/5">
-        <div class="grid lg:grid-cols-2 gap-32 reveal">
-            
-            <div>
-                <h2 class="boss-font text-6xl md:text-8xl italic mb-12 leading-none">SECURE_ <br> UPLINK</h2>
-                <p class="text-zinc-500 mb-16 text-xl font-light leading-relaxed">
-                    Establish a direct channel for project deployment or emergency troubleshooting. 
-                    System Status: <span class="text-cyan-400 mono text-xs animate-pulse">OPERATIONAL</span>
-                </p>
-
-                <div class="space-y-12">
-                    <div class="flex items-center gap-8 group">
-                        <div class="w-20 h-20 border border-cyan-400/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all">
-                            <i class="fab fa-whatsapp text-3xl"></i>
-                        </div>
-                        <div>
-                            <p class="mono text-[10px] text-zinc-600 uppercase tracking-widest mb-2">WhatsApp_Official</p>
-                            <a href="https://wa.me/923351696907" class="boss-font text-xl">+92 335 1696907</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-8 group">
-                        <div class="w-20 h-20 border border-cyan-400/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all">
-                            <i class="fas fa-envelope text-3xl"></i>
-                        </div>
-                        <div>
-                            <p class="mono text-[10px] text-zinc-600 uppercase tracking-widest mb-2">Primary_Email</p>
-                            <a href="mailto:techfixerpk@gmail.com" class="boss-font text-lg">TECHFIXERPK@GMAIL.COM</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="max-ui-card p-14 relative">
-                <div class="scanner"></div>
-                <form action="https://formspree.io/f/techfixerpk@gmail.com" method="POST" class="space-y-10">
-                    <div>
-                        <label class="mono text-[10px] text-cyan-400 uppercase tracking-[5px] block mb-4">User_Identification</label>
-                        <input type="text" name="name" required class="w-full bg-white/5 border border-white/10 p-6 focus:outline-none focus:border-cyan-400 transition-all font-mono text-sm text-white" placeholder="NAME_ENTRY">
-                    </div>
-                    <div>
-                        <label class="mono text-[10px] text-cyan-400 uppercase tracking-[5px] block mb-4">Email_Uplink</label>
-                        <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 p-6 focus:outline-none focus:border-cyan-400 transition-all font-mono text-sm text-white" placeholder="EMAIL_ENTRY">
-                    </div>
-                    <div>
-                        <label class="mono text-[10px] text-cyan-400 uppercase tracking-[5px] block mb-4">Payload_Details</label>
-                        <textarea name="message" rows="5" required class="w-full bg-white/5 border border-white/10 p-6 focus:outline-none focus:border-cyan-400 transition-all font-mono text-sm text-white" placeholder="SPECIFY_PROJECT_PARAMETERS..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="cyber-btn w-full flex justify-between items-center group">
-                        <span>TRANSMIT_PAYLOAD</span>
-                        <i class="fas fa-satellite-dish group-hover:translate-x-3 transition-transform"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-24 border-t border-white/5 text-center relative overflow-hidden">
-        <div class="container mx-auto px-10">
-            <h2 class="boss-font text-[14px] opacity-10 tracking-[35px] mb-16 uppercase">Tech_Fixer_Protocol</h2>
-            <div class="flex justify-center gap-16 mb-20">
-                <a href="#" class="text-zinc-600 hover:text-cyan-400 transition text-3xl"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-zinc-600 hover:text-cyan-400 transition text-3xl"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-zinc-600 hover:text-cyan-400 transition text-3xl"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <p class="mono text-[10px] text-zinc-700 uppercase tracking-[12px]">
-                Authorized_Access_Only &copy; 2026 // RAWALPINDI_ISLAMABAD_PK
+            <p class="text-zinc-500 text-xl max-w-xl border-l-2 border-cyan-400 pl-6">
+                Specialized in high-end hardware repair and tactical software development. We scale your technical infrastructure.
             </p>
-        </div>
-    </footer>
+        </section>
+
+        <section id="services" class="py-32 grid md:grid-cols-3 gap-8">
+            <div class="max-ui-card p-10 reveal">
+                <h3 class="boss-font text-2xl mb-4 italic text-cyan-400">FIX.</h3>
+                <p class="text-zinc-500 text-sm">Hardware diagnostics and legacy system stabilization.</p>
+            </div>
+            <div class="max-ui-card p-10 reveal">
+                <h3 class="boss-font text-2xl mb-4 italic text-cyan-400">BUILD.</h3>
+                <p class="text-zinc-500 text-sm">Custom AI workstations and secure software architecture.</p>
+            </div>
+            <div class="max-ui-card p-10 reveal">
+                <h3 class="boss-font text-2xl mb-4 italic text-cyan-400">GROW.</h3>
+                <p class="text-zinc-500 text-sm">SEO dominance and technical authority expansion.</p>
+            </div>
+        </section>
+
+        <section id="hardware" class="py-32">
+            <h2 class="boss-font text-3xl mb-12 italic border-b border-white/10 pb-4">LATEST_DEVICES</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="https://wa.me/923351696907?text=Order_CoreX" class="max-ui-card p-8 group reveal">
+                    <i class="fas fa-microchip text-3xl mb-6 text-zinc-700 group-hover:text-cyan-400"></i>
+                    <h4 class="boss-font text-[12px] mb-4">CORE_X_ENGINE</h4>
+                    <span class="text-cyan-400 font-bold">$450</span>
+                </a>
+                <a href="https://wa.me/923351696907?text=Order_NeonStrike" class="max-ui-card p-8 group reveal">
+                    <i class="fas fa-memory text-3xl mb-6 text-zinc-700 group-hover:text-cyan-400"></i>
+                    <h4 class="boss-font text-[12px] mb-4">NEON_STRIKE_Z</h4>
+                    <span class="text-cyan-400 font-bold">$899</span>
+                </a>
+                </div>
+        </section>
+
+        <section id="contact" class="py-32 reveal">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="boss-font text-5xl mb-8">CONTACT_US</h2>
+                    <p class="text-zinc-500 mb-10">Ready to uplink? Use the terminal below to send your request directly to techfixerpk@gmail.com.</p>
+                    <div class="mono text-cyan-400">
+                        <p class="mb-2"><i class="fab fa-whatsapp"></i> +92 335 1696907</p>
+                        <p><i class="fas fa-envelope"></i> techfixerpk@gmail.com</p>
+                    </div>
+                </div>
+                <div class="max-ui-card p-10">
+                    <form action="https://formspree.io/f/techfixerpk@gmail.com" method="POST" class="space-y-6">
+                        <input type="text" name="name" placeholder="IDENT_NAME" required class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm">
+                        <input type="email" name="email" placeholder="IDENT_EMAIL" required class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm">
+                        <textarea name="message" placeholder="DATA_PAYLOAD" rows="4" required class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm"></textarea>
+                        <button type="submit" class="cyber-btn w-full">SEND_PAYLOAD</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="system-log" class="mono text-[10px] p-4 text-zinc-500">
+        <div id="log-content"></div>
+    </div>
 
     <script>
         // Reveal Logic
         window.addEventListener('scroll', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const revealTop = el.getBoundingClientRect().top;
-                if (revealTop < windowHeight - 150) {
-                    el.classList.add('active');
-                }
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
             });
-            // Parallax Grid
-            document.querySelector('.grid-layer').style.transform = `translateY(${window.scrollY * 0.25}px)`;
         });
 
-        // Mobile Menu Control
-        function toggleMenu() {
-            document.getElementById('mobile-menu').classList.toggle('active');
-        }
-
-        // Transmission Success Feedback
-        const form = document.querySelector('form');
-        form.addEventListener('submit', () => {
-            const btn = form.querySelector('button');
-            btn.innerHTML = "<span>TRANSMITTING...</span> <i class='fas fa-circle-notch animate-spin'></i>";
-        });
+        // Terminal Log Animation
+        const logContent = document.getElementById('log-content');
+        const logs = [
+            "> Initializing Tech_Fixer Core...",
+            "> Connection established via techfixerpk@gmail.com",
+            "> Hardware status: Optimal",
+            "> Waiting for user input...",
+            "> Security protocol active.",
+            "> Scanning for system vulnerabilities..."
+        ];
+        let i = 0;
+        setInterval(() => {
+            const p = document.createElement('p');
+            p.textContent = logs[i % logs.length];
+            logContent.appendChild(p);
+            if (logContent.children.length > 8) logContent.removeChild(logContent.firstChild);
+            i++;
+        }, 2000);
     </script>
-
 </body>
 </html>
-
