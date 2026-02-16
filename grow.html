@@ -70,16 +70,23 @@
 
     <div class="cyber-grid"></div>
 
-    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/80">
-        <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
-        <div class="hidden lg:flex gap-10">
-            <a href="index.html" class="nav-link">HOME</a>
-            <a href="services.html" class="nav-link">SERVICES</a>
-            <a href="products.html" class="nav-link">PRODUCTS</a>
-            <a href="contact.html" class="nav-link">CONTACT</a>
-        </div>
-        <div class="mono text-[10px] text-cyan-400">STATUS: MARKET_DOMINANCE_ACTIVE</div>
-    </nav>
+  <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/90 border-b border-cyan-400/20 z-[6000] backdrop-blur-md">
+    <a href="index.html" class="boss-font text-[12px] text-white tracking-widest">
+        TECH <span class="text-cyan-400">FIXER</span>
+    </a>
+    
+    <button id="nav-toggle" class="lg:hidden text-cyan-400 text-2xl focus:outline-none p-2">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="nav-menu" class="hidden absolute top-full left-0 w-full bg-black/95 flex-col p-10 gap-8 lg:static lg:flex lg:flex-row lg:w-auto lg:p-0 lg:bg-transparent border-b border-cyan-400/10 lg:border-0">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="services.html" class="nav-link">SERVICES</a>
+        <a href="products.html" class="nav-link">PRODUCTS</a>
+        <a href="profile.html" class="nav-link">PROFILE</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+    </div>
+</nav>
 
     <header class="pt-48 pb-20 px-6 max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-10 items-center">
@@ -176,4 +183,5 @@
     </script>
 </body>
 </html>
+
 
