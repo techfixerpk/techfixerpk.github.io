@@ -49,8 +49,9 @@ Disallow: /private/
 # [SECTION 05: GLOBAL INDEXING MAP]
 # JAB WEBSITE LIVE HO JAYE, TOH 'techfixerpk' KO APNE 
 # ASLI DOMAIN SE BADLEIN.
-Sitemap: https://techfixerpk/sitemap.xml
+Sitemap: https://techfixerpk.github.io/sitemap.xml
 
 # ---------------------------------------------------------
 # GLOBAL_SIGNAL_STABLE // END_OF_TRANSMISSION
+
 # ---------------------------------------------------------
