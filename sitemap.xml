@@ -1,63 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="https://www.sitemaps.org/renderers/sitemap-prio.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITEMAP | TECH FIXER GLOBAL DIRECTORY</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <url>
-        <loc>https://techfixer.pk/</loc>
-        <lastmod>2026-02-16T04:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.00</priority>
-    </url>
+    <div class="cyber-grid"></div>
 
-    <url>
-        <loc>https://techfixerpk.github.io/profile.html</loc>
-        <lastmod>2026-02-16T04:00:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.95</priority>
-        <image:image>
-            <image:loc>https://techfixerpk.github.io/your-pic.png</image:loc>
-            <image:title>Fahad Umar Malik - IBM Certified Architect</image:title>
-            <image:caption>Global Tech Solutions &amp; System Architecture</image:caption>
-        </image:image>
-    </url>
+    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/80">
+        <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
+        <div class="mono text-[10px] text-zinc-500 uppercase">LOCATION: techfixerpk.github.io</div>
+    </nav>
 
-    <url>
-        <loc>https://techfixerpk.github.io/fix.html</loc>
-        <lastmod>2026-02-16T04:00:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.90</priority>
-    </url>
+    <header class="pt-40 pb-20 px-6 text-center">
+        <h1 class="boss-font text-5xl md:text-7xl italic mb-6">SYSTEM_ <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">DIRECTORY.</span></h1>
+        <p class="mono text-zinc-500 text-xs tracking-[10px] uppercase underline decoration-cyan-400">techfixerpk.github.io_index</p>
+    </header>
 
-    <url>
-        <loc>https://techfixerpk.github.io/build.html</loc>
-        <lastmod>2026-02-16T04:00:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.90</priority>
-    </url>
+    <main class="max-w-4xl mx-auto px-6 pb-40">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <div class="node-box reveal active">
+                <h3 class="boss-font text-cyan-400 text-sm mb-6 underline">CORE_NODES</h3>
+                <ul class="space-y-4 mono text-xs uppercase tracking-widest">
+                    <li><a href="index.html" class="hover:text-cyan-400">/HOME_STATION</a></li>
+                    <li><a href="profile.html" class="hover:text-cyan-400">/EXECUTIVE_BIO</a></li>
+                    <li><a href="services.html" class="hover:text-cyan-400">/CAPABILITIES_MATRIX</a></li>
+                    <li><a href="products.html" class="hover:text-cyan-400">/INVENTORY_CONTROL</a></li>
+                    <li><a href="contact.html" class="hover:text-cyan-400">/SECURE_UPLINK</a></li>
+                </ul>
+            </div>
 
-    <url>
-        <loc>https://techfixerpk.github.io/grow.html</loc>
-        <lastmod>2026-02-16T04:00:00+00:00</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.90</priority>
-    </url>
+            <div class="node-box reveal active">
+                <h3 class="boss-font text-cyan-400 text-sm mb-6 underline">SERVICE_FRAGMENTS</h3>
+                <ul class="space-y-4 mono text-xs uppercase tracking-widest text-zinc-500">
+                    <li><a href="fix.html" class="hover:text-white">/HARDWARE_REPAIR</a></li>
+                    <li><a href="build.html" class="hover:text-white">/CUSTOM_ARCHITECTURE</a></li>
+                    <li><a href="grow.html" class="hover:text-white">/TECHNICAL_SCALING</a></li>
+                </ul>
+            </div>
 
-    <url>
-        <loc>https://techfixerpk.github.io/products.html</loc>
-        <lastmod>2026-02-16T04:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.98</priority>
-    </url>
+            <div class="node-box reveal active md:col-span-2">
+                <h3 class="boss-font text-cyan-400 text-sm mb-6 underline">EXTERNAL_UPLINKS</h3>
+                <div class="flex flex-wrap gap-8 mono text-[10px]">
+                    <a href="https://www.linkedin.com/in/fahad-umar-malik/" target="_blank" class="border border-white/10 px-4 py-2 hover:border-cyan-400 transition">LINKEDIN_NODE</a>
+                    <a href="https://business.facebook.com/latest/home/?asset_id=1010390342152585" target="_blank" class="border border-white/10 px-4 py-2 hover:border-cyan-400 transition">FACEBOOK_ASSET</a>
+                    <a href="https://wa.me/923351696907" target="_blank" class="border border-white/10 px-4 py-2 hover:border-cyan-400 transition">WHATSAPP_COMMS</a>
+                    <a href="https://github.com/techfixerpk" target="_blank" class="border border-white/10 px-4 py-2 hover:border-cyan-400 transition">GITHUB_REPOSITORY</a>
+                </div>
+            </div>
 
-    <url>
-        <loc>https://techfixerpk.github.io/contact.html</loc>
-        <lastmod>2026-02-16T04:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
-    </url>
+        </div>
+    </main>
 
+    <footer class="py-10 text-center opacity-30 mono text-[9px] tracking-[15px]">
+        SITEMAP_PROTOCOL_v1.0
+    </footer>
 
-</urlset>
-
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
