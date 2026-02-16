@@ -1,132 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGENCY SERVICES | TECH FIXER</title>
+    <title>SERVICES | TECH FIXER INDUSTRIAL SOLUTIONS</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
+
+        :root {
+            --neon: #00f2ff;
+            --bg: #010101;
+            --panel: rgba(255, 255, 255, 0.02);
+            --border: rgba(0, 242, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* --- UI ELEMENTS --- */
+        .cyber-grid {
+            position: fixed; inset: 0;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px; z-index: -1; opacity: 0.3;
+        }
+
+        nav { border-bottom: 1px solid var(--border); backdrop-blur: 20px; z-index: 5000; }
+        .nav-link { font-family: 'Syncopate'; font-size: 10px; color: #fff; transition: 0.3s; letter-spacing: 2px; }
         
-        :root { --neon: #00f2ff; --bg: #020202; }
-        body { background: var(--bg); color: white; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
-        .boss-font { font-family: 'Syncopate', sans-serif; }
+        /* --- SERVICE MODULES --- */
+        .service-row {
+            border-bottom: 1px solid var(--border);
+            padding: 100px 0; transition: 0.5s;
+        }
+        .service-row:hover { background: rgba(0,242,255,0.02); }
 
-        /* Dynamic Scanline Background */
-        .scanline {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            z-index: 100;
-            pointer-events: none;
+        .spec-tag {
+            font-size: 10px; color: var(--neon); border: 1px solid var(--neon);
+            padding: 5px 15px; font-family: 'JetBrains Mono'; margin-right: 10px;
+            display: inline-block; margin-bottom: 10px;
         }
 
-        /* Tactical Service Cards */
-        .tactical-card {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            text-decoration: none;
-            overflow: hidden;
+        .cyber-btn {
+            border: 1px solid var(--neon); padding: 15px 35px;
+            color: var(--neon); font-family: 'Syncopate'; font-size: 10px;
+            transition: 0.4s; display: inline-block;
         }
+        .cyber-btn:hover { background: var(--neon); color: #000; box-shadow: 0 0 30px var(--neon); }
 
-        .tactical-card:hover {
-            border-color: var(--neon);
-            background: rgba(0, 242, 255, 0.02);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1);
-        }
-
-        .tactical-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.1), transparent);
-            transition: 0.5s;
-        }
-
-        .tactical-card:hover::before {
-            left: 100%;
-        }
-
-        .nav-logo { height: 35px; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <div class="scanline"></div>
+    <div class="cyber-grid"></div>
 
-    <nav class="fixed top-0 w-full z-[150] bg-black/90 backdrop-blur-xl border-b border-white/5 px-10 py-6 flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="logo.png" alt="Logo" class="nav-logo">
-            <span class="boss-font text-[10px] tracking-tighter hidden md:block italic">TECH<span class="text-cyan-400">FIXER</span></span>
-        </a>
-        <div class="flex gap-10 font-mono text-[9px] tracking-[4px] uppercase">
-            <a href="index.html" class="opacity-40 hover:opacity-100 transition">Hub</a>
-            <a href="profile.html" class="opacity-40 hover:opacity-100 transition">Identity</a>
-            <span class="text-cyan-400 border-b border-cyan-400/50">Services_v4.0</span>
+    <nav class="fixed top-0 w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/80">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="boss-font text-[12px] text-white">TECH <span class="text-cyan-400">FIXER</span></a>
         </div>
+        <div class="hidden lg:flex gap-10">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="profile.html" class="nav-link">PROFILE</a>
+            <a href="products.html" class="nav-link">PRODUCTS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </div>
+        <a href="https://wa.me/923351696907" class="cyber-btn !py-2 !px-5 text-[8px]">URGENT_UPLINK</a>
     </nav>
 
-    <main class="pt-48 pb-32 container mx-auto px-6 max-w-7xl">
+    <header class="pt-48 pb-20 px-6 text-center">
+        <h1 class="boss-font text-5xl md:text-9xl italic mb-6">CAPABILITIES_ <br> <span class="text-transparent" style="-webkit-text-stroke: 1.5px var(--neon);">MATRIX.</span></h1>
+        <p class="mono text-zinc-500 text-xs tracking-[10px] uppercase">Technical Operations & Engineering</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6">
         
-        <header class="mb-32">
-            <p class="font-mono text-cyan-400 text-xs tracking-[10px] uppercase mb-4 italic">// Service_Deployment_Matrix</p>
-            <h1 class="boss-font text-5xl md:text-8xl italic font-black leading-none uppercase">Digital <br>Architectures.</h1>
-        </header>
+        <section class="service-row reveal">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="mono text-cyan-400 mb-6 text-sm tracking-[5px]">MODULE_01 // RESTORATION</p>
+                    <h2 class="boss-font text-5xl mb-8 italic">FIX.</h2>
+                    <p class="text-zinc-400 text-lg leading-loose mb-10 font-light">
+                        Surgical hardware repair for high-end systems. We don't just replace parts; we diagnose and fix at the component level.
+                    </p>
+                    <div class="flex flex-wrap mb-10">
+                        <span class="spec-tag">GPU_REPAIR</span>
+                        <span class="spec-tag">BIOS_PROGRAMMING</span>
+                        <span class="spec-tag">CIRCUIT_RECOVERY</span>
+                        <span class="spec-tag">MACBOOK_REPAIR</span>
+                    </div>
+                    <a href="https://wa.me/923351696907?text=Repair_Service_Inquiry" class="cyber-btn">INITIATE_REPAIR_UPLINK</a>
+                </div>
+                <div class="border border-white/5 bg-white/5 p-10 mono text-[11px] text-zinc-500 leading-loose">
+                    [ LOG: 2026_REPAIR_PROTOCOL ]<br>
+                    > SCANNING FOR SHORT_CIRCUITS...<br>
+                    > THERMAL_IMAGING: ACTIVE<br>
+                    > SOLDERING_STATION: ONLINE<br>
+                    > SUCCESS_RATE: 98.4%<br>
+                    > LOCATION: RAWALPINDI_LAB
+                </div>
+            </div>
+        </section>
 
-        <div class="grid lg:grid-cols-3 gap-8">
-            
-            <a href="fix.html" class="tactical-card p-12 group">
-                <div class="mb-10 text-cyan-400 text-4xl transition-transform group-hover:scale-110">
-                    <i class="fas fa-microchip"></i>
+        <section class="service-row reveal">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 border border-white/5 bg-white/5 p-10 mono text-[11px] text-zinc-500 leading-loose">
+                    [ LOG: 2026_ARCHITECTURE_PROTOCOL ]<br>
+                    > CORE_ALLOCATION: OPTIMIZED<br>
+                    > THERMAL_DYNAMICS: CALIBRATED<br>
+                    > CUSTOM_LOOP: LEAK_TEST_OK<br>
+                    > POWER_SUPPLY: STABLE<br>
+                    > DEPLOYMENT: READY
                 </div>
-                <h3 class="boss-font text-xl mb-4 italic">FIX_NODE</h3>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-10">Optimizing broken infrastructures, fixing performance bottlenecks, and stabilizing technical business models.</p>
-                <div class="flex items-center gap-4">
-                    <div class="h-[1px] w-8 bg-cyan-400"></div>
-                    <span class="font-mono text-[10px] text-cyan-400">ACCESS_INTERFACE</span>
+                <div class="order-1 lg:order-2">
+                    <p class="mono text-cyan-400 mb-6 text-sm tracking-[5px]">MODULE_02 // CONSTRUCTION</p>
+                    <h2 class="boss-font text-5xl mb-8 italic">BUILD.</h2>
+                    <p class="text-zinc-400 text-lg leading-loose mb-10 font-light">
+                        Designing the engines of the future. Custom PC builds for AI developers, 3D animators, and elite gamers.
+                    </p>
+                    <div class="flex flex-wrap mb-10">
+                        <span class="spec-tag">AI_WORKSTATIONS</span>
+                        <span class="spec-tag">LIQUID_COOLING</span>
+                        <span class="spec-tag">SERVER_RACKS</span>
+                        <span class="spec-tag">GAMING_RIGS</span>
+                    </div>
+                    <a href="https://wa.me/923351696907?text=Custom_Build_Inquiry" class="cyber-btn">REQUEST_CUSTOM_BUILD</a>
                 </div>
-            </a>
+            </div>
+        </section>
 
-            <a href="build.html" class="tactical-card p-12 group border-t-4 border-t-cyan-400">
-                <div class="mb-10 text-cyan-400 text-4xl transition-transform group-hover:scale-110">
-                    <i class="fas fa-terminal"></i>
+        <section class="service-row reveal">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="mono text-cyan-400 mb-6 text-sm tracking-[5px]">MODULE_03 // SCALING</p>
+                    <h2 class="boss-font text-5xl mb-8 italic">GROW.</h2>
+                    <p class="text-zinc-400 text-lg leading-loose mb-10 font-light">
+                        Taking your technical infrastructure to the global market. SEO, system speed optimization, and digital authority building.
+                    </p>
+                    <div class="flex flex-wrap mb-10">
+                        <span class="spec-tag">TECHNICAL_SEO</span>
+                        <span class="spec-tag">SPEED_OPTIMIZATION</span>
+                        <span class="spec-tag">AUTHORITY_BUILDING</span>
+                        <span class="spec-tag">INFRA_SCALING</span>
+                    </div>
+                    <a href="https://wa.me/923351696907?text=Growth_SEO_Inquiry" class="cyber-btn">SCALE_MY_BUSINESS</a>
                 </div>
-                <h3 class="boss-font text-xl mb-4 italic">BUILD_NODE</h3>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-10">Engineering scalable web applications, custom software, and full-stack digital products from the ground up.</p>
-                <div class="flex items-center gap-4">
-                    <div class="h-[1px] w-8 bg-cyan-400"></div>
-                    <span class="font-mono text-[10px] text-cyan-400">ACCESS_INTERFACE</span>
+                <div class="border border-white/5 bg-white/5 p-10 mono text-[11px] text-zinc-500 leading-loose">
+                    [ LOG: 2026_GROWTH_PROTOCOL ]<br>
+                    > INDEX_SCANNING: 100%<br>
+                    > GOOGLE_CORE_VITALS: OPTIMAL<br>
+                    > BACKLINK_AUTHORITY: BUILDING<br>
+                    > CONVERSION_RATE: RISING<br>
+                    > STATUS: MARKET_DOMINANCE
                 </div>
-            </a>
-
-            <a href="grow.html" class="tactical-card p-12 group">
-                <div class="mb-10 text-cyan-400 text-4xl transition-transform group-hover:scale-110">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3 class="boss-font text-xl mb-4 italic">GROW_NODE</h3>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-10">SEO dominance, GEO-tagging, and authority-driven branding to scale your digital presence in the market.</p>
-                <div class="flex items-center gap-4">
-                    <div class="h-[1px] w-8 bg-cyan-400"></div>
-                    <span class="font-mono text-[10px] text-cyan-400">ACCESS_INTERFACE</span>
-                </div>
-            </a>
-
-        </div>
+            </div>
+        </section>
 
     </main>
 
-    <footer class="py-10 text-center opacity-10 font-mono text-[8px] tracking-[20px] uppercase">
-        Tech Fixer // Digital Operations // 2026
+    <footer class="py-20 px-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center bg-black/50">
+        <div>
+            <p class="boss-font text-sm text-white mb-2">TECH_FIXER_NET</p>
+            <p class="mono text-[10px] text-zinc-600 uppercase">Fahad Umar Malik | Service Division</p>
+        </div>
+        <div class="flex gap-10 mt-8 md:mt-0">
+            <a href="https://www.linkedin.com/in/fahad-umar-malik/" target="_blank" class="text-zinc-500 hover:text-cyan-400 transition text-xl"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/923351696907" target="_blank" class="text-zinc-500 hover:text-cyan-400 transition text-xl"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://business.facebook.com/latest/home/?asset_id=1010390342152585" target="_blank" class="text-zinc-500 hover:text-cyan-400 transition text-xl"><i class="fab fa-facebook"></i></a>
+        </div>
     </footer>
 
+    <script>
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
-
 </html>
