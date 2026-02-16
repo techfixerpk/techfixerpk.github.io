@@ -1,232 +1,164 @@
-/* PROJECT: TECH FIXER - UNIVERSAL UI
-   AUTHOR: GEMINI AI (2026 EDITION)
-   DESIGN: NEON-GLASSMOPHISM
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Space+Grotesk:wght@300;700;900&display=swap');
+/* --- 1. GLOBAL ARCHITECTURE & FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
 :root {
-    /* Color Palette */
-    --primary-cyan: #00f2ff;
-    --primary-blue: #0062ff;
-    --bg-black: #050505;
-    --card-glass: rgba(255, 255, 255, 0.03);
-    --border-glass: rgba(255, 255, 255, 0.1);
-    
-    /* Responsive Spacing */
-    --section-padding: clamp(3rem, 10vh, 8rem);
-    --container-width: 1300px;
-    
-    /* Animation Curve */
-    --ease: cubic-bezier(0.23, 1, 0.32, 1);
+    --neon: #00f2ff;
+    --bg: #010101;
+    --panel: rgba(255, 255, 255, 0.03);
+    --border: rgba(0, 242, 255, 0.15);
+    --text-dim: #a1a1aa;
 }
 
-/* --- 1. Global Reset --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    background-color: var(--bg-black);
-    color: #ffffff;
+    background: var(--bg);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
     overflow-x: hidden;
+    width: 100%;
     line-height: 1.6;
 }
 
-/* --- 2. Catching Background Graphics --- */
-body::before {
-    content: "";
+.boss-font { 
+    font-family: 'Syncopate', sans-serif; 
+    text-transform: uppercase; 
+}
+
+.mono { 
+    font-family: 'JetBrains Mono', monospace; 
+}
+
+/* --- 2. DYNAMIC BACKGROUND GRID --- */
+.cyber-grid {
     position: fixed;
     inset: 0;
-    background: 
-        radial-gradient(circle at 15% 25%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(0, 98, 255, 0.08) 0%, transparent 40%),
-        linear-gradient(var(--border-glass) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border-glass) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
     z-index: -1;
-    mask-image: radial-gradient(circle, black, transparent 90%);
+    opacity: 0.3;
+    pointer-events: none;
 }
 
-/* --- 3. Fluid Grid Container --- */
-.container {
-    width: 90%;
-    max-width: var(--container-width);
-    margin: 0 auto;
-}
-
-/* --- 4. Navigation (Responsive Glass) --- */
+/* --- 3. NAVIGATION SYSTEM --- */
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 1.2rem 0;
-    background: rgba(5, 5, 5, 0.6);
+    border-bottom: 1px solid var(--border);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-glass);
+    z-index: 5000;
+    background: rgba(0, 0, 0, 0.85);
 }
 
-.nav-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 900;
-    font-size: 1.5rem;
-    letter-spacing: -1px;
+.nav-link {
+    font-family: 'Syncopate';
+    font-size: 10px;
     color: #fff;
+    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    letter-spacing: 2px;
+    text-decoration: none;
 }
 
-.logo span {
-    color: var(--primary-cyan);
-    text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+.nav-link:hover {
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon);
 }
 
-/* --- 5. Hero Section (The "Heavy" Catching Text) --- */
-.hero {
-    padding: var(--section-padding) 0;
-    text-align: center;
-}
-
-.heavy-text {
-    font-family: 'Space Grotesk', sans-serif;
-    /* Font size adjust automatically for Mobile (2.5rem) to Desktop (6.5rem) */
-    font-size: clamp(2.5rem, 9vw, 6.5rem);
-    font-weight: 900;
-    line-height: 0.95;
-    letter-spacing: -3px;
-    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.4));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1.5rem;
-}
-
-.sub-text {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #999;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-}
-
-/* --- 6. Interactive Cyber Cards (Fluid Grid) --- */
-.services-grid {
-    display: grid;
-    /* Mobile par 1 column, Tablet/Desktop par automatic adjustment */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    padding-bottom: var(--section-padding);
-}
-
-.cyber-card {
-    background: var(--card-glass);
-    border: 1px solid var(--border-glass);
-    border-radius: 28px;
-    padding: 3rem 2rem;
-    transition: var(--ease);
-    text-align: left;
+/* --- 4. CARDS & MODULES (REPSONSIVE) --- */
+.node-box, .build-card, .metric-card, .repair-node, .prod-card, .info-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     position: relative;
-    overflow: hidden;
+    height: 100%;
 }
 
-.cyber-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--primary-cyan);
-    box-shadow: 0 20px 40px rgba(0, 242, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
+.node-box:hover, .build-card:hover, .prod-card:hover {
+    border-color: var(--neon);
+    transform: translateY(-8px);
+    background: rgba(0, 242, 255, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1);
 }
 
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.cyber-card h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-    color: #fff;
-}
-
-.cyber-card p {
-    color: #888;
-    font-size: 1rem;
-}
-
-/* --- 7. Catchy Buttons --- */
-.btn-group {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap; /* Mobile par buttons stack ho jayenge */
-}
-
-.mag-btn {
-    padding: 1.2rem 2.8rem;
-    border-radius: 100px;
-    font-weight: 700;
-    font-size: 1rem;
+/* --- 5. INDUSTRIAL BUTTONS --- */
+.btn-max, .btn-action, .btn-buy, .btn-send, .cyber-btn {
+    border: 1px solid var(--neon);
+    padding: 16px 32px;
+    color: var(--neon);
+    background: transparent;
+    font-family: 'Syncopate';
+    font-size: 10px;
     cursor: pointer;
-    transition: var(--ease);
-    border: none;
-    text-transform: uppercase;
+    transition: 0.4s;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
     letter-spacing: 1px;
 }
 
-.btn-cyan {
-    background: var(--primary-cyan);
+.btn-max:hover, .btn-action:hover, .btn-buy:hover, .btn-send:hover {
+    background: var(--neon);
     color: #000;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+    box-shadow: 0 0 25px var(--neon);
 }
 
-.btn-cyan:hover {
-    transform: scale(1.05);
-    background: #fff;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-}
-
-.btn-outline {
-    background: transparent;
+/* --- 6. FORM OPTIMIZATION --- */
+.input-field, input, textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    padding: 18px;
     color: #fff;
-    border: 1px solid var(--border-glass);
+    font-family: 'JetBrains Mono';
+    outline: none;
+    transition: 0.3s;
 }
 
-.btn-outline:hover {
-    background: var(--border-glass);
+input:focus, textarea:focus {
+    border-color: var(--neon);
+    background: rgba(0, 242, 255, 0.05);
 }
 
-/* --- 8. Responsive Media Queries (Extra Polish) --- */
+/* --- 7. ANIMATIONS (REVEAL) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
 
-/* Mobile Devices */
-@media (max-width: 600px) {
-    .heavy-text {
-        letter-spacing: -1px; /* Mobile par readable rakhta hai */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 8. MOBILE OPTIMIZATION (MEDIA QUERIES) --- */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem !important;
+        letter-spacing: -2px !important;
     }
     
-    .cyber-card {
-        padding: 2rem 1.5rem;
+    .node-box, .build-card, .metric-card {
+        padding: 1.5rem;
     }
-    
-    .mag-btn {
-        width: 100%; /* Mobile par full width buttons */
+
+    nav {
+        padding: 1rem !important;
+    }
+
+    .boss-font {
+        font-size: 90%;
     }
 }
 
-/* Tablet Devices */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
+/* Custom Grayscale Map Adjustment */
+.map-container {
+    width: 100%;
+    height: 400px;
+    border: 1px solid var(--border);
+    filter: grayscale(1) invert(0.9) contrast(1.2);
+    opacity: 0.7;
 }
