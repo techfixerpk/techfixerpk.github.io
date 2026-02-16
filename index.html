@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECH FIXER | FIX • BUILD • GROW | MASTER_V3</title>
+    <title>TECH FIXER | FIX • BUILD • GROW | MASTER_CONSOLE_2026</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* * GLOBAL DESIGN SYSTEM - TECH FIXER CORE
+         * VOLUME: 1000+ LINE ARCHITECTURE 
+         */
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;500&display=swap');
 
         :root {
@@ -17,189 +20,205 @@
             --bg: #010101;
             --panel: rgba(255, 255, 255, 0.02);
             --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        body {
-            background-color: var(--bg);
-            color: #ffffff;
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .boss-font { font-family: 'Syncopate', sans-serif; }
+        /* --- BASE RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; line-height: 1.6; }
+        .boss-font { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* 🔳 GRID & ANIMATION */
+        /* --- BACKGROUND ENGINE --- */
         .grid-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: linear-gradient(var(--neon-dim) 1px, transparent 1px), linear-gradient(90deg, var(--neon-dim) 1px, transparent 1px);
-            background-size: 50px 50px; z-index: -2;
-            mask-image: radial-gradient(circle at 50% 50%, black, transparent 90%);
+            background-size: 60px 60px; z-index: -10;
+            mask-image: radial-gradient(circle at center, black, transparent 85%);
         }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        /* --- NAVIGATION --- */
+        nav { border-bottom: 1px solid var(--border); backdrop-filter: blur(25px); z-index: 1000; transition: var(--transition); }
+        .nav-link { font-family: 'Syncopate'; font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.4); transition: var(--transition); }
+        .nav-link:hover { color: var(--neon); text-shadow: 0 0 10px var(--neon); }
+
+        /* --- BUTTONS --- */
+        .btn-cyber {
+            border: 1px solid var(--neon); padding: 1rem 2.5rem;
+            font-family: 'Syncopate'; font-size: 10px; color: var(--neon);
+            background: transparent; cursor: pointer; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 1rem;
+        }
+        .btn-cyber:hover { background: var(--neon); color: #000; box-shadow: 0 0 30px var(--neon); transform: scale(1.05); }
+
+        /* --- UI CARDS --- */
+        .max-card {
+            background: var(--panel); border: 1px solid var(--border);
+            padding: 3rem; transition: var(--transition); position: relative; overflow: hidden;
+        }
+        .max-card:hover { border-color: var(--neon); background: rgba(0,242,255,0.03); transform: translateY(-10px); }
+        .scanner { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--neon); animation: scan 4s linear infinite; opacity: 0.1; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes scan { 0% { transform: translateY(-100px); } 100% { transform: translateY(600px); } }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .max-ui-card {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(15px);
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .max-ui-card:hover {
-            border-color: var(--neon);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .nav-link {
-            font-family: 'Syncopate'; font-size: 9px; letter-spacing: 3px;
-            color: rgba(255, 255, 255, 0.4); transition: 0.4s;
-        }
-        .nav-link:hover { color: var(--neon); }
-
-        .cyber-btn {
-            border: 1px solid var(--neon);
-            padding: 12px 24px;
-            font-family: 'Syncopate'; font-size: 10px;
-            color: var(--neon);
-            transition: 0.4s;
-        }
-        .cyber-btn:hover { background: var(--neon); color: black; box-shadow: 0 0 20px var(--neon); }
-
-        #system-log {
-            height: 150px;
-            background: rgba(0,0,0,0.8);
-            border-top: 1px solid var(--border);
-            overflow-y: hidden;
-        }
+        /* --- SPECIFIC MODULES --- */
+        #terminal { height: 200px; background: #000; border: 1px solid var(--border); padding: 20px; font-size: 11px; color: var(--neon); overflow: hidden; opacity: 0.7; }
     </style>
 </head>
 <body>
 
     <div class="grid-layer"></div>
 
-    <nav class="fixed top-0 w-full z-[1000] border-b border-white/5 bg-black/80 backdrop-blur-xl py-6 px-10 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <img src="logo.png" alt="TECH_FIXER" class="h-8">
-            <span class="boss-font text-[12px] italic tracking-tighter">TECH <span class="text-cyan-400">FIXER</span></span>
+    <nav class="fixed top-0 w-full py-8 px-12 flex justify-between items-center bg-black/60">
+        <div class="flex items-center gap-6">
+            <img src="logo.png" alt="TF_LOGO" class="h-10 hover:brightness-125 transition">
+            <span class="boss-font text-[14px] italic tracking-tighter">TECH <span class="text-cyan-400">FIXER</span></span>
         </div>
 
-        <div class="hidden lg:flex items-center gap-10">
-            <a href="#profile" class="nav-link">PROFILE</a>
-            <a href="#services" class="nav-link">SERVICES</a>
-            <a href="#hardware" class="nav-link">PRODUCTS</a>
-            <a href="#contact" class="nav-link">CONTACT</a>
-            <a href="https://wa.me/923351696907" class="cyber-btn">UPLINK_WA</a>
+        <div class="hidden lg:flex items-center gap-14">
+            <a href="profile.html" class="nav-link">PROFILE</a>
+            <a href="services.html" class="nav-link">SERVICES</a>
+            <a href="products.html" class="nav-link">PRODUCTS</a>
+            <a href="contact.html" class="nav-link text-cyan-400">CONTACT</a>
+            <a href="https://wa.me/923351696907" class="btn-cyber !py-3 !px-6">UPLINK_WA</a>
         </div>
-
-        <button class="lg:hidden text-cyan-400" onclick="document.getElementById('m-menu').classList.toggle('hidden')">
-            <i class="fas fa-bars"></i>
-        </button>
     </nav>
 
-    <div id="m-menu" class="hidden fixed inset-0 bg-black z-[1001] flex flex-col items-center justify-center gap-8">
-        <a href="#profile" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">PROFILE</a>
-        <a href="#services" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">SERVICES</a>
-        <a href="#hardware" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">PRODUCTS</a>
-        <a href="#contact" class="boss-font text-xl" onclick="this.parentElement.classList.add('hidden')">CONTACT</a>
-    </div>
-
-    <main class="container mx-auto px-10 pt-40">
-        
-        <section id="profile" class="min-h-[70vh] flex flex-col justify-center reveal active">
-            <h1 class="boss-font text-6xl md:text-[9rem] font-black italic leading-[0.85] mb-10">
-                FIX_BUILD <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">GROW.</span>
+    <section class="min-h-screen pt-52 px-12">
+        <div class="reveal active">
+            <h1 class="boss-font text-6xl md:text-[12rem] font-black italic leading-[0.8] mb-20 tracking-tighter">
+                MASTER <br> <span class="text-transparent" style="-webkit-text-stroke: 1px var(--neon);">CONTROL.</span>
             </h1>
-            <p class="text-zinc-500 text-xl max-w-xl border-l-2 border-cyan-400 pl-6">
-                Specialized in high-end hardware repair and tactical software development. We scale your technical infrastructure.
-            </p>
-        </section>
-
-        <section id="services" class="py-32 grid md:grid-cols-3 gap-8">
-            <div class="max-ui-card p-10 reveal">
-                <h3 class="boss-font text-2xl mb-4 italic text-cyan-400">FIX.</h3>
-                <p class="text-zinc-500 text-sm">Hardware diagnostics and legacy system stabilization.</p>
-            </div>
-            <div class="max-ui-card p-10 reveal">
-                <h3 class="boss-font text-2xl mb-4 italic text-cyan-400">BUILD.</h3>
-                <p class="text-zinc-500 text-sm">Custom AI workstations and secure software architecture.</p>
-            </div>
-            <div class="max-ui-card p-10 reveal">
-                <h3 class="boss-font text-2xl mb-4 italic text-cyan-400">GROW.</h3>
-                <p class="text-zinc-500 text-sm">SEO dominance and technical authority expansion.</p>
-            </div>
-        </section>
-
-        <section id="hardware" class="py-32">
-            <h2 class="boss-font text-3xl mb-12 italic border-b border-white/10 pb-4">LATEST_DEVICES</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="https://wa.me/923351696907?text=Order_CoreX" class="max-ui-card p-8 group reveal">
-                    <i class="fas fa-microchip text-3xl mb-6 text-zinc-700 group-hover:text-cyan-400"></i>
-                    <h4 class="boss-font text-[12px] mb-4">CORE_X_ENGINE</h4>
-                    <span class="text-cyan-400 font-bold">$450</span>
-                </a>
-                <a href="https://wa.me/923351696907?text=Order_NeonStrike" class="max-ui-card p-8 group reveal">
-                    <i class="fas fa-memory text-3xl mb-6 text-zinc-700 group-hover:text-cyan-400"></i>
-                    <h4 class="boss-font text-[12px] mb-4">NEON_STRIKE_Z</h4>
-                    <span class="text-cyan-400 font-bold">$899</span>
-                </a>
-                </div>
-        </section>
-
-        <section id="contact" class="py-32 reveal">
-            <div class="grid lg:grid-cols-2 gap-20">
-                <div>
-                    <h2 class="boss-font text-5xl mb-8">CONTACT_US</h2>
-                    <p class="text-zinc-500 mb-10">Ready to uplink? Use the terminal below to send your request directly to techfixerpk@gmail.com.</p>
-                    <div class="mono text-cyan-400">
-                        <p class="mb-2"><i class="fab fa-whatsapp"></i> +92 335 1696907</p>
-                        <p><i class="fas fa-envelope"></i> techfixerpk@gmail.com</p>
-                    </div>
-                </div>
-                <div class="max-ui-card p-10">
-                    <form action="https://formspree.io/f/techfixerpk@gmail.com" method="POST" class="space-y-6">
-                        <input type="text" name="name" placeholder="IDENT_NAME" required class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm">
-                        <input type="email" name="email" placeholder="IDENT_EMAIL" required class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm">
-                        <textarea name="message" placeholder="DATA_PAYLOAD" rows="4" required class="w-full bg-white/5 border border-white/10 p-4 focus:border-cyan-400 outline-none mono text-sm"></textarea>
-                        <button type="submit" class="cyber-btn w-full">SEND_PAYLOAD</button>
-                    </form>
+            
+            <div class="grid lg:grid-cols-2 gap-20 items-end">
+                <p class="text-zinc-500 text-2xl font-light max-w-2xl border-l-4 border-cyan-400 pl-10">
+                    High-performance hardware engineering & custom architectural builds. Rawalpindi's primary technical uplink for software optimization and authority scaling.
+                </p>
+                <div id="terminal" class="mono rounded-lg">
+                    <div id="log"></div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <div id="system-log" class="mono text-[10px] p-4 text-zinc-500">
-        <div id="log-content"></div>
-    </div>
+    <section class="py-40 px-12">
+        <div class="flex justify-between items-end mb-20 reveal">
+            <h2 class="boss-font text-4xl italic uppercase">Operation_Protocols</h2>
+            <p class="mono text-[10px] text-zinc-600 tracking-[10px]">SYSTEM_STABLE_2026</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="max-card group reveal">
+                <div class="scanner"></div>
+                <div class="flex justify-between mb-12">
+                    <i class="fas fa-microchip text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
+                    <span class="mono text-[10px] text-cyan-400 opacity-30 tracking-[5px]">FIX_v1.0</span>
+                </div>
+                <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">FIX.</h3>
+                <p class="text-zinc-500 text-sm leading-loose mb-10">
+                    Surgical hardware repair, system restoration, and legacy code optimization. We stabilize the broken and maximize current efficiency.
+                </p>
+                <a href="services.html" class="mono text-[11px] text-cyan-400 hover:tracking-[5px] transition-all uppercase">Access_Protocol &rarr;</a>
+            </div>
+
+            <div class="max-card group reveal" style="transition-delay: 0.2s;">
+                <div class="scanner"></div>
+                <div class="flex justify-between mb-12">
+                    <i class="fas fa-drafting-compass text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
+                    <span class="mono text-[10px] text-cyan-400 opacity-30 tracking-[5px]">BUILD_v2.1</span>
+                </div>
+                <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">BUILD.</h3>
+                <p class="text-zinc-500 text-sm leading-loose mb-10">
+                    Custom AI workstations, neural workstations, and bespoke software frameworks tailored to your specific technical mission.
+                </p>
+                <a href="services.html" class="mono text-[11px] text-cyan-400 hover:tracking-[5px] transition-all uppercase">Access_Protocol &rarr;</a>
+            </div>
+
+            <div class="max-card group reveal" style="transition-delay: 0.4s;">
+                <div class="scanner"></div>
+                <div class="flex justify-between mb-12">
+                    <i class="fas fa-satellite-dish text-4xl text-zinc-800 group-hover:text-cyan-400 transition-all"></i>
+                    <span class="mono text-[10px] text-cyan-400 opacity-30 tracking-[5px]">GROW_v5.0</span>
+                </div>
+                <h3 class="boss-font text-3xl mb-6 italic group-hover:text-cyan-400 transition">GROW.</h3>
+                <p class="text-zinc-500 text-sm leading-loose mb-10">
+                    Scaling technical authority through search engine dominance, market expansion, and industrial-tier digital growth strategies.
+                </p>
+                <a href="services.html" class="mono text-[11px] text-cyan-400 hover:tracking-[5px] transition-all uppercase">Access_Protocol &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 border-y border-white/5 reveal">
+        <div class="flex gap-20 overflow-hidden whitespace-nowrap">
+            <div class="flex gap-20 animate-marquee italic boss-font text-5xl opacity-5">
+                <span>CORE_X_ENGINE</span> <span>NEON_STRIKE_Z</span> <span>QUANTUM_HUB</span> <span>TECH_FIXER_RIG</span>
+                <span>CORE_X_ENGINE</span> <span>NEON_STRIKE_Z</span> <span>QUANTUM_HUB</span> <span>TECH_FIXER_RIG</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-preview" class="py-40 px-12">
+        <div class="grid lg:grid-cols-2 gap-24 reveal">
+            <div>
+                <h2 class="boss-font text-6xl italic mb-10 uppercase leading-none">Initialize <br> Contact_</h2>
+                <div class="space-y-6">
+                    <p class="mono text-zinc-500">Uplink: techfixerpk@gmail.com</p>
+                    <p class="mono text-zinc-500">Location: Islamabad/Rawalpindi, PK</p>
+                    <a href="contact.html" class="btn-cyber mt-10">GO_TO_FULL_UPLINK</a>
+                </div>
+            </div>
+            <div class="max-card">
+                <form action="https://formspree.io/f/xeelgbne" method="POST" class="space-y-8">
+                    <input type="text" name="name" required placeholder="USER_ID" class="w-full bg-white/5 border border-white/10 p-5 focus:border-cyan-400 outline-none mono text-sm">
+                    <input type="email" name="email" required placeholder="EMAIL_UPLINK" class="w-full bg-white/5 border border-white/10 p-5 focus:border-cyan-400 outline-none mono text-sm">
+                    <textarea name="message" rows="4" required placeholder="PAYLOAD_DATA" class="w-full bg-white/5 border border-white/10 p-5 focus:border-cyan-400 outline-none mono text-sm"></textarea>
+                    <button type="submit" class="btn-cyber w-full">SEND_PAYLOAD</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 px-12 flex flex-col md:flex-row justify-between items-center opacity-40">
+        <p class="mono text-[10px] tracking-[10px] uppercase">Tech_Fixer_Core_2026</p>
+        <div class="flex gap-10 mt-10 md:mt-0">
+            <a href="#" class="nav-link">Instagram</a>
+            <a href="#" class="nav-link">Github</a>
+            <a href="#" class="nav-link">WhatsApp</a>
+        </div>
+    </footer>
 
     <script>
+        // Terminal Animation
+        const logContent = [
+            "> Initializing Tech_Fixer_Protocol...",
+            "> Scanning hardware nodes...",
+            "> Security layer 01: ACTIVE",
+            "> Remote connection established...",
+            "> Welcome, Administrator.",
+            "> Payload delivery ready for: techfixerpk@gmail.com",
+            "> System Status: OPTIMAL"
+        ];
+        const logDiv = document.getElementById('log');
+        let idx = 0;
+        setInterval(() => {
+            const p = document.createElement('p');
+            p.className = 'mb-1';
+            p.textContent = logContent[idx % logContent.length];
+            logDiv.appendChild(p);
+            if (logDiv.children.length > 8) logDiv.removeChild(logDiv.firstChild);
+            idx++;
+        }, 2000);
+
         // Reveal Logic
         window.addEventListener('scroll', () => {
             document.querySelectorAll('.reveal').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
             });
         });
-
-        // Terminal Log Animation
-        const logContent = document.getElementById('log-content');
-        const logs = [
-            "> Initializing Tech_Fixer Core...",
-            "> Connection established via techfixerpk@gmail.com",
-            "> Hardware status: Optimal",
-            "> Waiting for user input...",
-            "> Security protocol active.",
-            "> Scanning for system vulnerabilities..."
-        ];
-        let i = 0;
-        setInterval(() => {
-            const p = document.createElement('p');
-            p.textContent = logs[i % logs.length];
-            logContent.appendChild(p);
-            if (logContent.children.length > 8) logContent.removeChild(logContent.firstChild);
-            i++;
-        }, 2000);
     </script>
 </body>
 </html>
